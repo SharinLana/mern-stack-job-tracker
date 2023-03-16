@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #39b5e0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@400;700&display=swap");
+
+/* fonts  */
+:root {
+  --headingFont: "Roboto Condensed", Sans-Serif;
+  --bodyFont: "Cabin", Sans-Serif;
+}
+
+main {
+  width: 100%;
+}
+
+p {
+  font-family: var(--bodyFont);
+  color: #2e2e41;
+}
+
+a {
+  font-family: var(--headingFont);
+  text-decoration: none;
+  color: #00b0ff;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--headingFont);
+  color: #2e2e41;
+}
+
+img {
+  width: 100%;
+}
+
+
+label, input {
+  font-family: var(--bodyFont);
+  color: #2e2e41;
+}
+
+button {
+  font-family: var(--headingFont);
+  color: white;
+  border: none;
+}
+
+
+
+
