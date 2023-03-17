@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   background-color: white;
   padding-top: 3px;
   padding-left: 15px;
+  z-index: 99;
   display: none;
 
   .logo-container {

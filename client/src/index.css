@@ -1,8 +1,5 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #39b5e0;
@@ -35,6 +32,7 @@ a {
   font-family: var(--headingFont);
   text-decoration: none;
   color: #00b0ff;
+
 }
 
 h1,
@@ -49,8 +47,8 @@ img {
   width: 100%;
 }
 
-
-label, input {
+label,
+input {
   font-family: var(--bodyFont);
   color: #2e2e41;
 }
@@ -60,7 +58,3 @@ button {
   color: white;
   border: none;
 }
-
-
-
-

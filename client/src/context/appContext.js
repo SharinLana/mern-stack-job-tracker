@@ -1,10 +1,15 @@
 import React, { useContext, useReducer } from "react";
 import reducer from "./reducers";
 
-import { TOGGLE_SIDEBAR } from "./actions";
+import {
+  TOGGLE_SIDEBAR,
+  PROFILE_EDITING,
+  SAVE_PROFILE_CHANGES,
+} from "./actions";
 
 const initialState = {
   showSidebar: false,
+  isProfileInputsActive: false,
 };
 
 const AppContext = React.createContext();
@@ -16,8 +21,23 @@ const AppProvider = ({ children }) => {
     dispatch({ type: TOGGLE_SIDEBAR });
   };
 
+  const showProfileEditingInputs = () => {
+    dispatch({ type: PROFILE_EDITING });
+  };
+
+  const saveProfileChanges = () => {
+    dispatch({ type: SAVE_PROFILE_CHANGES });
+  };
+
   return (
-    <AppContext.Provider value={{ ...state, toggleSidebar }}>
+    <AppContext.Provider
+      value={{
+        ...state,
+        toggleSidebar,
+        showProfileEditingInputs,
+        saveProfileChanges,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

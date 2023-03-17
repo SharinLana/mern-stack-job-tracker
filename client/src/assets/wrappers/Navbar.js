@@ -16,7 +16,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0px 25px;
+    padding: 20px 25px;
   }
 
   .nav-btn {
@@ -25,8 +25,7 @@ const Wrapper = styled.div`
   }
 
   h2 {
-    color: #ff78f0;
-    font-size: 28px;
+    display: none
   }
 
   .user-btn {
@@ -45,9 +44,11 @@ const Wrapper = styled.div`
 
   @media all and (min-width: 800px) {
     h2 {
+      display: block;
       color: #ff78f0;
       font-size: 30px;
-      margin: 18px;
+      margin: 0px;
+      margin-left: 150px
     }
   }
 `;

@@ -2,11 +2,15 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   position: fixed;
+  top: 80px;
   display: block;
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 130px;
+  margin-top: 0px;
+  z-index: 100;
+  background-color: #2e2e41e3;
+  min-height: 100vh;
 
   .cross-btn-container {
     margin: 15px 0px 0px 15px;
@@ -32,6 +36,8 @@ const Wrapper = styled.div`
     border-radius: 10px;
     width: 100%;
     max-width: 400px;
+    height: 50%;
+    margin-top: 40px;
   }
 
   .list-container {
@@ -51,7 +57,7 @@ const Wrapper = styled.div`
   }
 
   .navLink:hover {
-    color: #FF78F0;
+    color: #ff78f0;
   }
 
   .icon {

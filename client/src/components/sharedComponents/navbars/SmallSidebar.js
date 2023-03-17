@@ -8,7 +8,7 @@ const SmallSidebar = () => {
   const { showSidebar, toggleSidebar } = useAppContext();
 
   return (
-    <>
+    <main>
       {showSidebar && (
         <Wrapper>
           <div className="sidebar-container">
@@ -24,7 +24,7 @@ const SmallSidebar = () => {
           </div>
         </Wrapper>
       )}
-    </>
+    </main>
   );
 };
 

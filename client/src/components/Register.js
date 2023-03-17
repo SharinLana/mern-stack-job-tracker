@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/Register";
 import Logo from "./Logo";
 import FormInput from "./sharedComponents/FormInput";
+import FormLabel from "./sharedComponents/FormLabel";
 
 const initialState = {
   firstName: "",
@@ -40,68 +41,81 @@ const Register = () => {
               <Logo />
             </div>
             <h2>{inputValue.isMember ? "Login" : "Register"}</h2>
-            {!inputValue.isMember && (
-              <>
-                <FormInput
-                  type="text"
-                  name="firstName"
-                  labelText="First name*"
-                  onGetValue={getInputValueHandler}
-                  value={inputValue.firstName}
-                  required
-                  containerClass="input-container"
-                  labelClass="label"
-                  inputClass="input"
-                />
-                <FormInput
-                  type="text"
-                  name="lastName"
-                  labelText="Last name*"
-                  onGetValue={getInputValueHandler}
-                  value={inputValue.lastName}
-                  required
-                  containerClass="input-container"
-                  labelClass="label"
-                  inputClass="input"
-                />
-                <FormInput
-                  type="text"
-                  name="location"
-                  labelText="Your location"
-                  onGetValue={getInputValueHandler}
-                  value={inputValue.location}
-                  containerClass="input-container"
-                  labelClass="label"
-                  inputClass="input"
-                />
-              </>
-            )}
+            <div className="input-container">
+              {!inputValue.isMember && (
+                <>
+                  {/* First Name */}
+                  <FormLabel
+                    name="firstName"
+                    labelText="First name*"
+                    labelClass="label"
+                  />
+                  <FormInput
+                    type="text"
+                    name="firstName"
+                    onGetValue={getInputValueHandler}
+                    value={inputValue.firstName}
+                    required
+                    inputClass="input"
+                  />
 
-            {/* email */}
-            <FormInput
-              type="email"
-              name="email"
-              labelText="Email*"
-              onGetValue={getInputValueHandler}
-              value={inputValue.email}
-              required
-              containerClass="input-container"
-              labelClass="label"
-              inputClass="input"
-            />
+                  {/* Last Name */}
+                  <FormLabel
+                    name="lastName"
+                    labelText="Last name*"
+                    labelClass="label"
+                  />
+                  <FormInput
+                    type="text"
+                    name="lastName"
+                    onGetValue={getInputValueHandler}
+                    value={inputValue.lastName}
+                    required
+                    inputClass="input"
+                  />
 
-            {/* password */}
-            <FormInput
-              type="text"
-              name="password"
-              labelText="Password*"
-              onGetValue={getInputValueHandler}
-              value={inputValue.password}
-              required
-              containerClass="input-container"
-              labelClass="label"
-              inputClass="input"
-            />
+                  {/* Location */}
+                  <FormLabel
+                    name="location"
+                    labelText="Your location"
+                    labelClass="label"
+                  />
+                  <FormInput
+                    type="text"
+                    name="location"
+                    onGetValue={getInputValueHandler}
+                    value={inputValue.location}
+                    inputClass="input"
+                  />
+                </>
+              )}
+
+              {/* email */}
+              <FormLabel name="email" labelText="Email*" labelClass="label" />
+              <FormInput
+                type="email"
+                name="email"
+                onGetValue={getInputValueHandler}
+                value={inputValue.email}
+                required
+                inputClass="input"
+              />
+
+              {/* password */}
+              <FormLabel
+                name="password"
+                labelText="Password*"
+                labelClass="label"
+              />
+              <FormInput
+                type="text"
+                name="password"
+                onGetValue={getInputValueHandler}
+                value={inputValue.password}
+                required
+                inputClass="input"
+              />
+            </div>
 
             <button type="submit" className="submit-btn">
               Submit

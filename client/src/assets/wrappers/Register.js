@@ -45,11 +45,13 @@ const Wrapper = styled.div`
     height: 30px;
     padding-left: 10px;
     margin-top: 3px;
+    margin-bottom: 3px;
     font-size: 16px;
   }
 
   .label {
     font-size: 18px;
+    margin-top: 10px;
   }
 
   .submit-btn {
