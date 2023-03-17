@@ -3,6 +3,7 @@ import Wrapper from "../../assets/wrappers/Profile";
 import FormInput from "../sharedComponents/FormInput";
 import FormLabel from "../sharedComponents/FormLabel";
 import { useAppContext } from "../../context/appContext";
+import Logo from "../Logo";
 
 const initialState = {
   firstName: "Kate",
@@ -33,7 +34,11 @@ const Profile = () => {
   return (
     <Wrapper>
       <form className="form-container">
-        <h1>Profile</h1>
+        <div className="logo-container">
+          <Logo />
+        </div>
+
+        <h2>Profile</h2>
 
         {!isProfileInputsActive && (
           <button

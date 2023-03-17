@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   .form-container {
     position: relative;
     width: 86%;
-    max-width: 400px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -31,51 +31,30 @@ const Wrapper = styled.div`
     margin-top: 5px;
   }
 
-  .edit-btn {
-    position: absolute;
-    top: 140px;
-    right: 50px;
-    align-self: flex-end;
-    background-color: transparent;
-    color: #39b5e0;
-    font-size: 20px;
-
-  }
-
-  .edit-btn:hover {
-    color: #ff78f0;
-  }
-
   .input-container {
     width: 80%;
-    margin: 10px 0px 10px 40px;
+    align-self: center;
+    margin: 5px 10px 5px 0px;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-  }
-
-  .data {
-    margin: 10px;
-    font-size: 18px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .label {
-    width: 100px;
     font-size: 18px;
     color: #2e2e41;
-    font-weight: 600;
+    margin-bottom: 5px;
   }
 
   .input {
-    margin-left: 10px;
     width: 100%;
-    width: 200px;
+
     height: 30px;
     border-radius: 5px;
     outline: none;
     border: 1px solid #39b5e0;
     padding-left: 10px;
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .submit-btn {
