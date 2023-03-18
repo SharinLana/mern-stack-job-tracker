@@ -18,14 +18,11 @@ const Wrapper = styled.div`
     padding: 20px 0px 50px 0px;
     box-shadow: 0px 4px 10px #2e2e4148;
     transition: 0.3s ease-in-out all;
+    margin-left: ${(props) => props.move};
   }
 
   .search-form:hover {
     box-shadow: 0px 10px 18px #2e2e4148;
-  }
-
-  .move-component {
-    margin-left: 250px;
   }
 
   h2 {

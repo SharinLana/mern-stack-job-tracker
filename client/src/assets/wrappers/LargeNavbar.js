@@ -36,7 +36,7 @@ const Wrapper = styled.div`
   }
 
   .navLink {
-    color: black;
+    color: #2e2e41c7;
     margin: 15px 15px 15px 0px;
     font-size: 20px;
     display: flex;
@@ -45,7 +45,7 @@ const Wrapper = styled.div`
   }
 
   .navLink:hover {
-    color: #ff78f0;
+    color: #eb55beb0;
   }
 
   .active {

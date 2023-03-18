@@ -6,9 +6,10 @@ const Wrapper = styled.div`
   align-items: center;
   margin-top: 50px;
   margin-left: ${(props) => props.move};
+  transition: 0.3s ease-in-out all;
 
   h4 {
-    color: #2e2e41d2;
+    color: #2e2e41a5;
     font-size: 28px;
   }
 

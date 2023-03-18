@@ -11,6 +11,7 @@ const Wrapper = styled.div`
     font-size: 22px;
     color: #2e2e41d2;
     margin-left: ${(props) => props.move};
+    transition: 0.3s ease-in-out all;
   }
 
   .jobs-container {
@@ -20,6 +21,7 @@ const Wrapper = styled.div`
     width: 100%;
     margin-left: ${(props) => props.move};
     margin-bottom: 50px;
+    transition: 0.3s ease-in-out all;
   }
 
   .job-container {

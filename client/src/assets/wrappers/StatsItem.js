@@ -27,7 +27,7 @@ const Wrapper = styled.div`
     text-align: left;
     margin-top: 10px;
     font-size: 20px;
-    color: #2e2e41d2;
+    color: #2e2e41a5;
   }
   .icon {
     width: 70px;

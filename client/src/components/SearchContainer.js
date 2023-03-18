@@ -14,8 +14,8 @@ const SearchContainer = () => {
   };
 
   return (
-    <Wrapper>
-      <form className={showLargeSidebar ? "search-form move-component" : "search-form"}>
+    <Wrapper move={showLargeSidebar ? "250px" : "0px"}>
+      <form className="search-form">
         <Logo />
         <h2>Search Form</h2>
         <div className="inputs-container">

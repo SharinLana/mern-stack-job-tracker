@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   justify-content: center;
   margin-top: 150px;
   margin-left: ${(props) => props.move};
+  transition: 0.3s ease-in-out all;
 `;
 
 export default Wrapper;

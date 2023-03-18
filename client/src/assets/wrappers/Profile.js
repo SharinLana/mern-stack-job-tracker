@@ -19,6 +19,7 @@ const Wrapper = styled.div`
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.27);
     padding: 20px 5px 50px 5px;
     margin-left: ${(props) => props.move};
+    transition: 0.3s ease-in-out all;
   }
 
   .logo-container {
@@ -29,12 +30,12 @@ const Wrapper = styled.div`
     align-self: center;
     color: #eb55beb0;
     font-size: 30px;
-    margin-top: 5px;
+    margin-top: 25px;
   }
 
   .edit-btn {
     position: absolute;
-    top: 140px;
+    top: 160px;
     right: 50px;
     align-self: flex-end;
     background-color: transparent;

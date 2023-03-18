@@ -15,7 +15,7 @@ const LargeSidebar = () => {
           <div className="logo-container">
             <Logo />
             <button className="nav-btn" onClick={toggleSidebar}>
-              <FaAlignLeft size={25} color={"#2e2e41"} />
+              <FaAlignLeft size={25} color={"#2e2e41c7"} />
             </button>
           </div>
 
