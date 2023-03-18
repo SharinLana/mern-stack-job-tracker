@@ -39,7 +39,7 @@ const SearchContainer = () => {
               labelClass="label"
             />
             <SelectField
-              options={["remote", "full-time", "part-time"]}
+              options={["remote", "full-time", "part-time", "hybrid"]}
               onGetValue={getInputValueHandler}
               // value={}
               className="select"

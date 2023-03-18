@@ -26,6 +26,7 @@ main {
 p {
   font-family: var(--bodyFont);
   color: #2e2e41;
+
 }
 
 a {
@@ -37,7 +38,8 @@ a {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
   font-family: var(--headingFont);
   color: #2e2e41;
 }

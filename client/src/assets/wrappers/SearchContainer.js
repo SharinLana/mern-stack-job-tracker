@@ -7,7 +7,6 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
 
-
   .search-form {
     width: 90%;
     max-width: 700px;
