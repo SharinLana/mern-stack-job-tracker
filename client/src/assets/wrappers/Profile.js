@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 
   h2 {
     align-self: center;
-    color: #ff78f0;
+    color: #eb55beb0;
     font-size: 30px;
     margin-top: 5px;
   }
@@ -59,12 +59,13 @@ const Wrapper = styled.div`
     margin: 10px;
     font-size: 18px;
     font-style: italic;
+    color: #2e2e41d2;
   }
 
   .label {
     width: 100px;
     font-size: 18px;
-    color: #2e2e41;
+    color: #2e2e41d2;
   }
 
   .input {
@@ -74,10 +75,12 @@ const Wrapper = styled.div`
     height: 30px;
     border-radius: 5px;
     outline: none;
-    border: 1px solid #39b5e0;
+    border: 1px solid #00aeff64;
     padding-left: 10px;
     font-size: 18px;
     font-style: italic;
+    background-color: #39b6e011;
+    color: #2e2e41d2;
   }
 
   .submit-btn {
@@ -90,7 +93,7 @@ const Wrapper = styled.div`
   }
 
   .submit-btn:hover {
-    background-color: #ff78f0;
+    background-color: #eb55beb0;
   }
 `;
 

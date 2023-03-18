@@ -16,6 +16,12 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 20px 0px 50px 0px;
+    box-shadow: 0px 4px 10px #2e2e4148;
+    transition: 0.3s ease-in-out all;
+  }
+
+  .search-form:hover {
+    box-shadow: 0px 10px 18px #2e2e4148;
   }
 
   .move-component {
@@ -28,7 +34,7 @@ const Wrapper = styled.div`
     margin-left: 35px;
     align-self: flex-start;
     font-weight: 500;
-    color: #ff78f0;
+    color: #eb55bed5;
     font-size: 20px;
   }
 
@@ -58,9 +64,10 @@ const Wrapper = styled.div`
     height: 25px;
     border-radius: 5px;
     outline: none;
-    border: 1px solid #39b5e0;
+    border: 1px solid #00aeff64;
     padding-left: 10px;
     font-size: 16px;
+    background-color: #39b6e011;
   }
 
   .select {
@@ -69,9 +76,10 @@ const Wrapper = styled.div`
     height: 30px;
     border-radius: 5px;
     outline: none;
-    border: 1px solid #39b5e0;
+    border: 1px solid #00aeff64;
     padding-left: 4px;
     font-size: 15px;
+    background-color: #39b6e011;
   }
 
   .btn-container {
@@ -91,11 +99,11 @@ const Wrapper = styled.div`
   }
 
   .clear {
-    background-color: #ff78f0;
+    background-color: #eb55beb0;
   }
 
   .search-btn:hover {
-    background-color: #2e2e41;
+    background-color: #716F81;
   }
 `;
 

@@ -15,10 +15,15 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.27);
+    border-radius: 5px;
     padding: 20px 5px 50px 5px;
     margin-left: ${(props) => props.move};
+    box-shadow: 0px 4px 10px #2e2e4148;
+    transition: 0.3s ease-in-out all;
+  }
+
+  .form-container:hover {
+    box-shadow: 0px 10px 18px #2e2e4148;
   }
 
   .logo-container {
@@ -27,7 +32,7 @@ const Wrapper = styled.div`
 
   h2 {
     align-self: center;
-    color: #ff78f0;
+    color: #eb55beb0;
     font-size: 30px;
     margin-top: 5px;
   }
@@ -49,26 +54,27 @@ const Wrapper = styled.div`
 
   .input {
     width: 100%;
-
+    background-color: #39b6e011;
     height: 30px;
     border-radius: 5px;
     outline: none;
-    border: 1px solid #39b5e0;
+    border: 1px solid #00aeff64;
     padding-left: 10px;
     font-size: 15px;
   }
 
   .submit-btn {
     align-self: center;
+    width: 140px;
     margin-top: 40px;
     background-color: #39b5e0;
     padding: 8px 20px;
     font-size: 18px;
-    border-radius: 6px;
+    border-radius: 3px;
   }
 
   .submit-btn:hover {
-    background-color: #ff78f0;
+    background-color: #eb55beb0;
   }
 `;
 

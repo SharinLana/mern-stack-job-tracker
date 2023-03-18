@@ -33,7 +33,7 @@ const Register = () => {
   };
 
   return (
-    <>
+
       <Wrapper>
         <main className="form-container">
           <form onSubmit={formSubmitHandler}>
@@ -138,7 +138,7 @@ const Register = () => {
           </form>
         </main>
       </Wrapper>
-    </>
+
   );
 };
 

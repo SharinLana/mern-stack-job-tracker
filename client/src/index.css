@@ -2,7 +2,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #39b5e0;
+  background-color: #39b6e053;
 }
 
 code {
@@ -32,7 +32,8 @@ p {
 a {
   font-family: var(--headingFont);
   text-decoration: none;
-  color: #00b0ff;
+  color: #39b5e0;
+  color: #eb55beb0
 }
 
 h1,
@@ -58,4 +59,5 @@ button {
   font-family: var(--headingFont);
   color: white;
   border: none;
+  transition: 0.3s ease-in-out all;
 }

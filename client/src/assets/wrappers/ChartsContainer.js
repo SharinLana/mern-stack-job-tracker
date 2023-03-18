@@ -8,14 +8,14 @@ const Wrapper = styled.div`
   margin-left: ${(props) => props.move};
 
   h4 {
-    color: white;
+    color: #2e2e41d2;
     font-size: 28px;
   }
 
   .chart-btn {
     width: 150px;
     border-radius: 6px;
-    background-color: #2e2e41;
+    background-color: #716F81;
     font-size: 18px;
     font-weight: 600;
     padding: 8px 20px;
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 
   .chart-btn:hover {
     background-color: white;
-    color: #ff78f0;
+    color: #eb55beb0;
   }
 `;
 

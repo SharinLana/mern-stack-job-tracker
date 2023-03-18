@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   background-color: white;
   border-radius: 10px;
   width: 160px;
-  box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.27);
+  box-shadow: 0px 4px 10px #2e2e4148;
 
   header {
     display: flex;
@@ -27,6 +27,7 @@ const Wrapper = styled.div`
     text-align: left;
     margin-top: 10px;
     font-size: 20px;
+    color: #2e2e41d2;
   }
   .icon {
     width: 70px;

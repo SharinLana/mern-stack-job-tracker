@@ -16,12 +16,12 @@ const Wrapper = styled.div`
     color: white;
     padding: 0px 14px;
     border-radius: 10px;
-    background-color: #39b5e0;
+    background-color: #39b6e0e5;
     margin: 0px;
   }
 
   p {
-    color: #39b5e0;
+    color: #39b6e0e5;
     font-family: "Roboto Condensed", Sans-Serif;
     font-size: 26px;
     font-weight: 600;

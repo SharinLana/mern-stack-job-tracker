@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   }
 
   .user-btn {
-    background-color: #2e2e41;
+    background-color: #716F81;
     padding: 10px 20px;
     border-radius: 6px;
     display: flex;
@@ -45,7 +45,7 @@ const Wrapper = styled.div`
   @media all and (min-width: 800px) {
     h2 {
       display: block;
-      color: #ff78f0;
+      color: #eb55bed5;
       font-size: 30px;
       margin: 0px;
       margin-left: 150px

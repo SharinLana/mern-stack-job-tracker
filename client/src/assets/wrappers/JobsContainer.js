@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   h4 {
     margin-top: 50px;
     font-size: 22px;
-    color: white;
+    color: #2e2e41d2;
     margin-left: ${(props) => props.move};
   }
 
@@ -19,6 +19,7 @@ const Wrapper = styled.div`
     justify-content: center;
     width: 100%;
     margin-left: ${(props) => props.move};
+    margin-bottom: 50px;
   }
 
   .job-container {
@@ -28,6 +29,7 @@ const Wrapper = styled.div`
     max-width: 700px;
     background-color: white;
     border-radius: 5px;
+    box-shadow: 0px 2px 10px #2e2e4148;
   }
 
   header {

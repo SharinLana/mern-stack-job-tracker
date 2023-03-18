@@ -10,7 +10,7 @@ const Navbar = () => {
     <Wrapper>
       <div className="nav-container">
         <button className="nav-btn" onClick={toggleSidebar}>
-          <FaAlignLeft size={25} color={"#2e2e41"} />
+          <FaAlignLeft size={25} color={"#716F81"} />
         </button>
 
         <h2>Dashboard</h2>
