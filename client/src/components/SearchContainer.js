@@ -1,4 +1,5 @@
 import React from "react";
+import { useAppContext } from "../context/appContext";
 import Wrapper from "../assets/wrappers/SearchContainer";
 import FormInput from "./sharedComponents/FormInput";
 import FormLabel from "./sharedComponents/FormLabel";
@@ -6,13 +7,15 @@ import SelectField from "./sharedComponents/SelectField";
 import Logo from "./Logo";
 
 const SearchContainer = () => {
+  const { showLargeSidebar } = useAppContext();
+
   const getInputValueHandler = (e) => {
     // getInputValue({ name: e.target.name, value: e.target.value });
   };
 
   return (
     <Wrapper>
-      <form className="search-form">
+      <form className={showLargeSidebar ? "search-form move-component" : "search-form"}>
         <Logo />
         <h2>Search Form</h2>
         <div className="inputs-container">

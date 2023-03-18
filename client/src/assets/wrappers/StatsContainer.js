@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 150px;
+  margin-left: ${(props) => props.move};
 `;
 
 export default Wrapper;

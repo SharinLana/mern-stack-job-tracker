@@ -19,6 +19,7 @@ const Profile = () => {
     showProfileEditingInputs,
     isProfileInputsActive,
     saveProfileChanges,
+    showLargeSidebar,
   } = useAppContext();
 
   const getInputValueHandler = (e) => {
@@ -32,7 +33,7 @@ const Profile = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper move={showLargeSidebar ? "250px" : "0px"}>
       <form className="form-container">
         <div className="logo-container">
           <Logo />

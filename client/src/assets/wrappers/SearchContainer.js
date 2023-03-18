@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
 
+
   .search-form {
     width: 90%;
     max-width: 700px;
@@ -16,6 +17,10 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 20px 0px 50px 0px;
+  }
+
+  .move-component {
+    margin-left: 250px;
   }
 
   h2 {

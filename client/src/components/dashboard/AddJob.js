@@ -3,15 +3,17 @@ import Wrapper from "../../assets/wrappers/AddJob";
 import Logo from "../Logo";
 import FormLabel from "../sharedComponents/FormLabel";
 import FormInput from "../sharedComponents/FormInput";
+import { useAppContext } from "../../context/appContext";
 
 const AddJob = () => {
+  const { showLargeSidebar } = useAppContext();
   const getInputValueHandler = (e) => {
     // getInputValue({ name: e.target.name, value: e.target.value });
   };
 
   return (
-    <Wrapper>
-      <form className="form-container">
+    <Wrapper move={showLargeSidebar ? "250px" : "0px"}>
+      <form className="form-container" >
         <div className="logo-container">
           <Logo />
         </div>

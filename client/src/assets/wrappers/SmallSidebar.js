@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   width: 100%;
   margin-top: 0px;
   z-index: 100;
-  background-color: #2e2e41e3;
+  background-color: #2e2e41f9;
   min-height: 100vh;
 
   .cross-btn-container {
@@ -35,8 +35,8 @@ const Wrapper = styled.div`
     background-color: white;
     border-radius: 10px;
     width: 100%;
-    max-width: 400px;
-    height: 50%;
+    max-width: 300px;
+    height: 460px;
     margin-top: 40px;
   }
 

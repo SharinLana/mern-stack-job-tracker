@@ -4,7 +4,7 @@ import { TOGGLE_SIDEBAR, PROFILE_EDITING, SAVE_PROFILE_CHANGES } from "./actions
 
 const reducer = (state, action) => {
   if (action.type === TOGGLE_SIDEBAR) {
-    return { ...state, showSidebar: !state.showSidebar };
+    return { ...state, showSidebar: !state.showSidebar, showLargeSidebar: !state.showLargeSidebar };
   }
 
   if (action.type === PROFILE_EDITING) {

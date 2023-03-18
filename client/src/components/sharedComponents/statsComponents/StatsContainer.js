@@ -1,9 +1,12 @@
 import React from "react";
 import { FaSuitcaseRolling, FaCalendarCheck, FaBug } from "react-icons/fa";
 import Wrapper from "../../../assets/wrappers/StatsContainer";
+import { useAppContext } from "../../../context/appContext";
 import StatsItem from "../../sharedComponents/statsComponents/StatsItem";
 
 const StatsContainer = () => {
+  const { showLargeSidebar } = useAppContext();
+
   const defaultStats = [
     {
       title: "pending application",
@@ -32,7 +35,7 @@ const StatsContainer = () => {
   ];
 
   return (
-    <Wrapper>
+    <Wrapper move={showLargeSidebar ? "250px" : "0px"}>
       {defaultStats.map((item, index) => {
         return <StatsItem key={index} {...item} />;
       })}

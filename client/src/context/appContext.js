@@ -8,6 +8,7 @@ import {
 } from "./actions";
 
 const initialState = {
+  showLargeSidebar: false,
   showSidebar: false,
   isProfileInputsActive: false,
 };

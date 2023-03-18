@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
+  margin-left: ${(props) => props.move};
 
   h4 {
     color: white;

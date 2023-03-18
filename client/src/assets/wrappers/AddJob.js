@@ -18,6 +18,7 @@ const Wrapper = styled.div`
     border-radius: 10px;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.27);
     padding: 20px 5px 50px 5px;
+    margin-left: ${(props) => props.move};
   }
 
   .logo-container {

@@ -18,6 +18,7 @@ const Wrapper = styled.div`
     border-radius: 10px;
     box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.27);
     padding: 20px 5px 50px 5px;
+    margin-left: ${(props) => props.move};
   }
 
   .logo-container {
@@ -57,13 +58,13 @@ const Wrapper = styled.div`
   .data {
     margin: 10px;
     font-size: 18px;
+    font-style: italic;
   }
 
   .label {
     width: 100px;
     font-size: 18px;
     color: #2e2e41;
-    font-weight: 600;
   }
 
   .input {
@@ -76,6 +77,7 @@ const Wrapper = styled.div`
     border: 1px solid #39b5e0;
     padding-left: 10px;
     font-size: 18px;
+    font-style: italic;
   }
 
   .submit-btn {
