@@ -5,6 +5,13 @@ import express from "express";
 const app = express();
 import mongoose from "mongoose";
 mongoose.set("strictQuery", true);
+import morgan from "morgan";
+
+// Secirity packages
+import cors from "cors";
+import helmet from "helmet";
+import xss from "xss-clean";
+import mongoSanitize from "express-mongo-sanitize";
 
 // Parsers
 app.use(express.urlencoded({ extended: false }));
@@ -18,6 +25,19 @@ import errorHandler from "./middleware/errorHandler.js";
 
 const port = process.env.PORT || 4000;
 
+// Activate morgan
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
+
+// Security middleware
+app.use(cors());
+app.use(helmet());
+app.use(xss());
+app.set("trust proxy", 1); // for rateLimiter, to enable it when behind the reverse proxy (Heroku, Bluemix, etc)
+// The rateLimiter is used in the jobRoutes.js
+app.use(mongoSanitize());
+
 // Route middleware
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/jobs", jobRoutes);
@@ -30,7 +50,7 @@ const start = async () => {
       .connect(process.env.MONGODB_URL)
       .then(() => console.log("MONGODB connected!"))
       .catch((err) => console.log(err));
-      
+
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);
     });

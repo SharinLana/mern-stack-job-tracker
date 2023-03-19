@@ -14,5 +14,4 @@ router.route("/").get(getJobs).post(addJob);
 router.route("/stats").get(getStats);
 router.route("/:id").get(getSingleJob).patch(editJob).delete(deleteJob);
 
-
 export default router;
