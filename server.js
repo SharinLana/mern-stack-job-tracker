@@ -3,6 +3,8 @@ dotenv.config();
 
 import express from "express";
 const app = express();
+import mongoose from "mongoose";
+mongoose.set("strictQuery", true);
 
 // Parsers
 app.use(express.urlencoded({ extended: false }));
@@ -24,6 +26,11 @@ app.use(notFound);
 
 const start = async () => {
   try {
+    await mongoose
+      .connect(process.env.MONGODB_URL)
+      .then(() => console.log("MONGODB connected!"))
+      .catch((err) => console.log(err));
+      
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);
     });
