@@ -8,7 +8,15 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const port = process.env.port || 4000;
+// Importing routes
+import authRoutes from "./routes/auth-routes.js";
+import jobRoutes from "./routes/job-routes.js";
+
+const port = process.env.PORT || 4000;
+
+// Route middleware
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/jobs", jobRoutes);
 
 const start = async () => {
   try {
