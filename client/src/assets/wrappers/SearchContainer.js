@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     width: 90%;
     max-width: 700px;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;

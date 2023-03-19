@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
 import { BsPerson } from "react-icons/bs";
 import {
@@ -46,7 +47,10 @@ const JobItem = ({
         <div className={`status ${jobStatus}`}>{jobStatus}</div>
       </div>
 
-      <footer></footer>
+      <footer>
+        <Link to="/add-job" className="btn edit-btn">Edit</Link>
+        <button type="button" className="btn delete-btn">Delete</button>
+      </footer>
     </div>
   );
 };

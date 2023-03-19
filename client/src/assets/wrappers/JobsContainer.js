@@ -105,6 +105,43 @@ const Wrapper = styled.div`
     color: #a31acb;
     background: #a21acb65;
   }
+
+  footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    width: 100px;
+    padding: 8px 0px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .edit-btn {
+    background-color: #39b5e0;
+    margin-left: 30px;
+    transition: 0.3s ease-in-out all;
+  }
+
+  .delete-btn {
+    background-color: #716F81;
+  }
+
+  .edit-btn:hover {
+    background-color: #39b6e0a5;
+  }
+
+  .delete-btn:hover {
+    background-color: #716f819e;
+  }
 `;
 
 export default Wrapper;
