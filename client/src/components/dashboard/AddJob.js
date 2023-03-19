@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Wrapper from "../../assets/wrappers/AddJob";
 import Logo from "../Logo";
 import FormLabel from "../sharedComponents/FormLabel";
@@ -6,18 +7,18 @@ import FormInput from "../sharedComponents/FormInput";
 import { useAppContext } from "../../context/appContext";
 
 const AddJob = () => {
-  const { showLargeSidebar } = useAppContext();
+  const { showLargeSidebar, isEditing, setEditJob } = useAppContext();
   const getInputValueHandler = (e) => {
     // getInputValue({ name: e.target.name, value: e.target.value });
   };
 
   return (
     <Wrapper move={showLargeSidebar ? "250px" : "0px"}>
-      <form className="form-container" >
+      <form className="form-container">
         <div className="logo-container">
           <Logo />
         </div>
-        <h2>Add New Job</h2>
+        <h2>{isEditing ? "Edit Job" : "Add New Job"}</h2>
 
         {/* Company */}
         <div className="input-container">
@@ -134,8 +135,8 @@ const AddJob = () => {
           />
         </div>
 
-        <button type="submit" className="submit-btn">
-          Add Job
+        <button type="submit" className="submit-btn" onClick={() => setEditJob(false)}>
+          <Link to="/all-jobs" className="btn-link">{isEditing ? "Save Changes" : "Add Job"}</Link>
         </button>
       </form>
     </Wrapper>

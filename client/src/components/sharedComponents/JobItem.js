@@ -8,6 +8,7 @@ import {
   MdOutlineSchedule,
 } from "react-icons/md";
 import JobInfo from "./JobInfo";
+import { useAppContext } from "../../context/appContext";
 
 const JobItem = ({
   company,
@@ -21,6 +22,8 @@ const JobItem = ({
   interviewScheduled,
   createdAt,
 }) => {
+  const { setEditJob } = useAppContext();
+
   return (
     <div className="job-container">
       <header>
@@ -48,8 +51,12 @@ const JobItem = ({
       </div>
 
       <footer>
-        <Link to="/add-job" className="btn edit-btn">Edit</Link>
-        <button type="button" className="btn delete-btn">Delete</button>
+        <Link to="/add-job" className="btn edit-btn" onClick={() => setEditJob(true)}>
+          Edit
+        </Link>
+        <button type="button" className="btn delete-btn">
+          Delete
+        </button>
       </footer>
     </div>
   );

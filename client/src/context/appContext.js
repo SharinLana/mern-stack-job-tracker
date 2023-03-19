@@ -5,12 +5,14 @@ import {
   TOGGLE_SIDEBAR,
   PROFILE_EDITING,
   SAVE_PROFILE_CHANGES,
+  SET_EDIT_JOB,
 } from "./actions";
 
 const initialState = {
   showLargeSidebar: false,
   showSidebar: false,
   isProfileInputsActive: false,
+  isEditing: false,
 };
 
 const AppContext = React.createContext();
@@ -30,6 +32,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SAVE_PROFILE_CHANGES });
   };
 
+  const setEditJob = (boolean) => {
+    dispatch({ type: SET_EDIT_JOB, payload: {isEditing: boolean} });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -37,6 +43,7 @@ const AppProvider = ({ children }) => {
         toggleSidebar,
         showProfileEditingInputs,
         saveProfileChanges,
+        setEditJob,
       }}
     >
       {children}

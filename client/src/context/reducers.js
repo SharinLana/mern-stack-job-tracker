@@ -1,6 +1,6 @@
 import { initialState } from "./appContext";
 
-import { TOGGLE_SIDEBAR, PROFILE_EDITING, SAVE_PROFILE_CHANGES } from "./actions";
+import { TOGGLE_SIDEBAR, PROFILE_EDITING, SAVE_PROFILE_CHANGES, SET_EDIT_JOB } from "./actions";
 
 const reducer = (state, action) => {
   if (action.type === TOGGLE_SIDEBAR) {
@@ -13,6 +13,10 @@ const reducer = (state, action) => {
 
   if (action.type === SAVE_PROFILE_CHANGES) {
     return { ...state, isProfileInputsActive: false };
+  }
+
+  if (action.type === SET_EDIT_JOB) {
+    return { ...state, isEditing: action.payload.isEditing };
   }
 
   throw new Error(`No such action: ${action.type}`);

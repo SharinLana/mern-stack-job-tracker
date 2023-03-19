@@ -73,6 +73,10 @@ const Wrapper = styled.div`
     border-radius: 3px;
   }
 
+  .btn-link {
+    color: white;
+  }
+
   .submit-btn:hover {
     background-color: #eb55beb0;
   }
