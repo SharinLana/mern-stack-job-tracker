@@ -4,6 +4,10 @@ dotenv.config();
 import express from "express";
 const app = express();
 
+// Parsers
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 const port = process.env.port || 4000;
 
 const start = async () => {
