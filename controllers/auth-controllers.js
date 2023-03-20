@@ -8,6 +8,12 @@ const register = async (req, res, next) => {
     throw new BadRequestError();
   }
 
+  // Checking for the duplicate email
+  const userAlreadyExists = await UserModel.findOne({ email });
+  if (userAlreadyExists) {
+    throw new BadRequestError("This email is already in use");
+  }
+
   const user = await UserModel.create(req.body);
 
   res.status(StatusCodes.CREATED).json({
