@@ -5,7 +5,7 @@ import { BadRequestError } from "../errors/index.js";
 const register = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
   if (!firstName || !lastName || !email || !password) {
-    throw new BadRequestError();
+    throw new BadRequestError("Please provide your first and last name, email and password");
   }
 
   // Checking for the duplicate email

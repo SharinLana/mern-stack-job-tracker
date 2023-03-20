@@ -3,8 +3,11 @@ dotenv.config();
 
 import express from "express";
 const app = express();
+
 import mongoose from "mongoose";
 mongoose.set("strictQuery", true);
+
+import "express-async-errors";
 import morgan from "morgan";
 
 // Secirity packages
