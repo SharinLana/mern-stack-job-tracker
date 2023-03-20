@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import validator from "validator";
+import bcrypt from "bcryptjs";
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -36,6 +37,13 @@ const userSchema = new mongoose.Schema({
     trim: true,
     select: false,
   },
+});
+
+userSchema.pre("save", async function () {
+  if (!this.isModified("password")) return; // do not hash the password again if the user changed his/her data
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
 });
 
 const UserModel = mongoose.model("UserModel", userSchema);
