@@ -1,5 +1,6 @@
 import express from "express";
 import rateLimiter from "express-rate-limit";
+import authVerification from "../middleware/auth.js";
 import {
   register,
   login,
@@ -16,6 +17,6 @@ const apiLimiter = rateLimiter({
 
 router.route("/register").post(apiLimiter, register);
 router.route("/login").post(apiLimiter, login);
-router.route("/updateUser").patch(updateUser);
+router.route("/updateUser").patch(authVerification, updateUser);
 
 export default router;
