@@ -22,6 +22,7 @@ import authRoutes from "./routes/auth-routes.js";
 import jobRoutes from "./routes/job-routes.js";
 import notFound from "./middleware/notFound.js";
 import errorHandler from "./middleware/errorHandler.js";
+import authVerification from "./middleware/auth.js";
 
 const port = process.env.PORT || 4000;
 
@@ -40,7 +41,7 @@ app.use(mongoSanitize());
 
 // Route middleware
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/jobs", jobRoutes);
+app.use("/api/v1/jobs", authVerification, jobRoutes);
 app.use(errorHandler);
 app.use(notFound);
 
