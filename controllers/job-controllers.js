@@ -1,6 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import JobModel from "../models/jobModel.js";
 import { BadRequestError } from "../errors/index.js";
+import checkPermissions from "../utils/checkPermissions.js";
 
 const getJobs = async (req, res, next) => {
   const jobs = await JobModel.find({ createdBy: req.user.userId });
@@ -39,6 +40,9 @@ const editJob = async (req, res, next) => {
   if (!job) {
     throw new BadRequestError(`There's no job with the id: ${req.params.id}`);
   }
+
+  // Checking the current user permittions for editing the job:
+  checkPermissions(req.user, job.createdBy);
 
   const updatedJob = await JobModel.findOneAndUpdate(
     { _id: req.params.id },
