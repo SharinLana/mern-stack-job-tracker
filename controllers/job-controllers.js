@@ -4,7 +4,25 @@ import { BadRequestError } from "../errors/index.js";
 import checkPermissions from "../utils/checkPermissions.js";
 
 const getJobs = async (req, res, next) => {
-  const jobs = await JobModel.find({ createdBy: req.user.userId });
+  const { search, jobType, jobStatus, sort } = req.query;
+  const queryObject = { createdBy: req.user.userId };
+
+  // Search
+  if (search) {
+    queryObject.position = { $regex: search, $options: "i" };
+  }
+
+  // jobType
+  if (jobType && jobType !== "all") {
+    queryObject.jobType = jobType;
+  }
+
+  if (jobStatus && jobStatus !== "all") {
+    queryObject.jobStatus = jobStatus;
+  }
+  let result = JobModel.find(queryObject);
+  
+  const jobs = await result;
 
   res.status(StatusCodes.OK).json({
     status: "success",
