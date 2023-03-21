@@ -59,7 +59,19 @@ const editJob = async (req, res, next) => {
 };
 
 const deleteJob = async (req, res, next) => {
-  res.send("Delete job");
+  const job = await JobModel.findOne({ _id: req.params.id });
+  if (!job) {
+    throw new BadRequestError(`There's no job with the id: ${req.params.id}`);
+  }
+
+  checkPermissions(req.user, job.createdBy);
+
+  await JobModel.findOneAndDelete({ _id: req.params.id });
+
+  res.status(StatusCodes.OK).json({
+    status: "success",
+    message: "The job has been deleted!",
+  });
 };
 
 const getStats = async (req, res, next) => {
