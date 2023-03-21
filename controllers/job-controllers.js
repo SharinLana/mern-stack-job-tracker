@@ -30,7 +30,28 @@ const addJob = async (req, res, next) => {
 };
 
 const editJob = async (req, res, next) => {
-  res.send("Edit job");
+  const { company, position } = req.body;
+  if (!company || !position) {
+    throw new BadRequestError("Please provide position and company!");
+  }
+
+  const job = await JobModel.findOne({ _id: req.params.id });
+  if (!job) {
+    throw new BadRequestError(`There's no job with the id: ${req.params.id}`);
+  }
+
+  const updatedJob = await JobModel.findOneAndUpdate(
+    { _id: req.params.id },
+    req.body,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+  res.status(StatusCodes.OK).json({
+    status: "success",
+    updatedJob,
+  });
 };
 
 const deleteJob = async (req, res, next) => {
