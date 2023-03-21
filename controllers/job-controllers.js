@@ -1,10 +1,11 @@
 import { StatusCodes } from "http-status-codes";
 import JobModel from "../models/jobModel.js";
+import { BadRequestError } from "../errors/index.js";
 
 const getJobs = async (req, res, next) => {
   const jobs = await JobModel.find({ createdBy: req.user.userId });
 
-  res.send(StatusCodes.OK).json({
+  res.status(StatusCodes.OK).json({
     status: "success",
     totalJobs: jobs.length,
     jobs,
@@ -12,8 +13,22 @@ const getJobs = async (req, res, next) => {
 };
 
 const addJob = async (req, res, next) => {
-  res.send("Add job");
+  const { position, company } = req.body;
+  if (!position || !company ) {
+    throw new BadRequestError("Please provide position and company!");
+  }
+
+  // Adding the user to the req.body
+  req.body.createdBy = req.user.userId;
+
+  const job = await JobModel.create(req.body);
+
+  res.status(StatusCodes.CREATED).json({
+    status: "success",
+    job,
+  });
 };
+
 
 const getSingleJob = async (req, res, next) => {
   res.send("A job");
