@@ -47,7 +47,7 @@ const login = async (req, res, next) => {
   // Comparing the user's original and current password
   const passwordIsCorrect = await user.comparePasswords(password);
   if (!passwordIsCorrect) {
-    throw new UnauthorizedError("Incorrect password!")
+    throw new UnauthorizedError("Incorrect password!");
   }
 
   const token = user.createJWT();
@@ -57,12 +57,36 @@ const login = async (req, res, next) => {
     status: "success",
     token,
     user,
-    location: user.userLocation,
+    userLocation: user.userLocation,
   });
 };
 
 const updateUser = async (req, res, next) => {
-  res.send("updateUser");
+  const { firstName, lastName, userLocation, email } = req.body;
+
+  if (!firstName || !lastName || !email) {
+    throw new BadRequestError(
+      "Please provide your first and last name, email and password"
+    );
+  }
+
+  const user = await UserModel.findOne({ _id: req.user.userId });
+
+  user.firstName = firstName;
+  user.lastName = lastName;
+  user.userLocation = userLocation;
+  user.email = email;
+
+  await user.save();
+
+  const token = user.createJWT();
+
+  res.status(StatusCodes.OK).json({
+    status: "success",
+    token,
+    user,
+    userLocation: user.userLocation,
+  });
 };
 
 export { register, login, updateUser };
