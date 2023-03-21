@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import { CustomError } from "../errors/index.js";
 
-const errorHandler = (err, res, req, next) => {
+const errorHandler = (err, req, res, next) => {
   let customError = {
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
     message: err.message || "Something went wrong. Try again later",
@@ -24,6 +24,7 @@ const errorHandler = (err, res, req, next) => {
     customError.message = `Duplicate value entered for ${Object.keys(
       err.keyValue
     )} field. Please choose another value`;
+    customError.statusCode = StatusCodes.BAD_REQUEST;
   }
 
   // Cast error
