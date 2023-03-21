@@ -2,7 +2,6 @@ import express from "express";
 import {
   getJobs,
   addJob,
-  getSingleJob,
   editJob,
   deleteJob,
   getStats,
@@ -12,6 +11,6 @@ const router = express.Router();
 
 router.route("/").get(getJobs).post(addJob);
 router.route("/stats").get(getStats);
-router.route("/:id").get(getSingleJob).patch(editJob).delete(deleteJob);
+router.route("/:id").patch(editJob).delete(deleteJob);
 
 export default router;

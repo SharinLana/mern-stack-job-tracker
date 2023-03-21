@@ -14,7 +14,7 @@ const getJobs = async (req, res, next) => {
 
 const addJob = async (req, res, next) => {
   const { position, company } = req.body;
-  if (!position || !company ) {
+  if (!position || !company) {
     throw new BadRequestError("Please provide position and company!");
   }
 
@@ -29,11 +29,6 @@ const addJob = async (req, res, next) => {
   });
 };
 
-
-const getSingleJob = async (req, res, next) => {
-  res.send("A job");
-};
-
 const editJob = async (req, res, next) => {
   res.send("Edit job");
 };
@@ -46,4 +41,4 @@ const getStats = async (req, res, next) => {
   res.send("Stats");
 };
 
-export { getJobs, addJob, getSingleJob, editJob, deleteJob, getStats };
+export { getJobs, addJob, editJob, deleteJob, getStats };
