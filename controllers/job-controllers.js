@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { StatusCodes } from "http-status-codes";
 import JobModel from "../models/jobModel.js";
 import { BadRequestError } from "../errors/index.js";
@@ -50,7 +51,7 @@ const getJobs = async (req, res, next) => {
   const jobs = await result;
 
   const totalJobs = await JobModel.countDocuments(queryObject);
-  const numOfPages = Math.ceil(totalJobs / limit)
+  const numOfPages = Math.ceil(totalJobs / limit);
 
   res.status(StatusCodes.OK).json({
     status: "success",
@@ -122,7 +123,28 @@ const deleteJob = async (req, res, next) => {
 };
 
 const getStats = async (req, res, next) => {
-  res.send("Stats");
+  let stats = await JobModel.aggregate([
+    { $match: { createdBy: new mongoose.Types.ObjectId(req.user.userId) } },
+    { $group: { _id: "$jobStatus", count: { $sum: 1 } } },
+  ]);
+
+  // Changing the ststa format from array to object
+  stats = stats.reduce((acc, current) => {
+    const { _id, count } = current;
+    acc[_id] = count;
+    return acc;
+  }, {});
+
+  const defaultStats = {
+    pending: stats.pending || 0,
+    interview: stats.interview || 0,
+    declined: stats.declined || 0,
+  };
+
+  res.status(StatusCodes.OK).json({
+    status: 'success',
+    defaultStats,
+  });
 };
 
 export { getJobs, addJob, editJob, deleteJob, getStats };
