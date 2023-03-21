@@ -107,7 +107,6 @@ const Profile = () => {
               name="location"
               onGetValue={getInputValueHandler}
               value={inputValue.location}
-              required
               inputClass="input"
             />
           )}
