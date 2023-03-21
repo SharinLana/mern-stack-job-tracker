@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import moment from "moment";
 import { StatusCodes } from "http-status-codes";
 import JobModel from "../models/jobModel.js";
 import { BadRequestError } from "../errors/index.js";
@@ -154,6 +155,22 @@ const getStats = async (req, res, next) => {
     { $sort: { "_id.year": -1, "_id.month": -1 } },
     { $limit: 8 },
   ]);
+
+  // Re-format the monthlyApplications to get more suitable output for the frontend
+  monthlyApplications = monthlyApplications
+    .map((item) => {
+      const {
+        _id: { year, month },
+        count,
+      } = item;
+      const date = moment()
+        .month(month - 1)
+        .year(year)
+        .format("MMM Y");
+
+      return { date, count };
+    })
+    .reverse();
 
   res.status(StatusCodes.OK).json({
     status: "success",
