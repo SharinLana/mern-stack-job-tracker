@@ -141,9 +141,24 @@ const getStats = async (req, res, next) => {
     declined: stats.declined || 0,
   };
 
+  // Charts
+  let monthlyApplications = await JobModel.aggregate([
+    { $match: { createdBy: new mongoose.Types.ObjectId(req.user.userId) } },
+    {
+      $group: {
+        _id: { year: { $year: "$createdAt" }, month: { $month: "$createdAt" } },
+        count: { $sum: 1 },
+      },
+    },
+    // Latest jobs come first
+    { $sort: { "_id.year": -1, "_id.month": -1 } },
+    { $limit: 8 },
+  ]);
+
   res.status(StatusCodes.OK).json({
-    status: 'success',
+    status: "success",
     defaultStats,
+    monthlyApplications,
   });
 };
 
