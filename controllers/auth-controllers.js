@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import UserModel from "../models/userModel.js";
-import { BadRequestError } from "../errors/index.js";
+import { BadRequestError, UnauthorizedError } from "../errors/index.js";
 
 const register = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
@@ -32,7 +32,22 @@ const register = async (req, res, next) => {
 };
 
 const login = async (req, res, next) => {
-  res.send("Login");
+  const {email, password} = req.body;
+  if (!email || !password) {
+    throw new BadRequestError("Please provide your email and password")
+  }
+
+  const user = await UserModel.findOne({email}).select("+password");
+
+  const token = user.createJWT();
+  user.password = undefined;
+
+  res.status(StatusCodes.OK).json({
+    status: "success",
+    token,
+    user,
+    location: user.userLocation
+  })
 };
 
 const updateUser = async (req, res, next) => {
