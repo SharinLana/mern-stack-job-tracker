@@ -12,16 +12,35 @@ const getJobs = async (req, res, next) => {
     queryObject.position = { $regex: search, $options: "i" };
   }
 
-  // jobType
+  // Filtering by the jobType
   if (jobType && jobType !== "all") {
     queryObject.jobType = jobType;
   }
 
+  // Filtering by the jobStatus
   if (jobStatus && jobStatus !== "all") {
     queryObject.jobStatus = jobStatus;
   }
+
   let result = JobModel.find(queryObject);
-  
+
+  // Sorting
+  if (sort === "latest") {
+    result = result.sort("-createdAt");
+  }
+
+  if (sort === "oldest") {
+    result = result.sort("createdAt");
+  }
+
+  if (sort === "a-z") {
+    result = result.sort("position");
+  }
+
+  if (sort === "z-a") {
+    result = result.sort("-position");
+  }
+
   const jobs = await result;
 
   res.status(StatusCodes.OK).json({
