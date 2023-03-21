@@ -5,7 +5,9 @@ import { BadRequestError, UnauthorizedError } from "../errors/index.js";
 const register = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
   if (!firstName || !lastName || !email || !password) {
-    throw new BadRequestError("Please provide your first and last name, email and password");
+    throw new BadRequestError(
+      "Please provide your first and last name, email and password"
+    );
   }
 
   // Checking for the duplicate email
@@ -32,12 +34,21 @@ const register = async (req, res, next) => {
 };
 
 const login = async (req, res, next) => {
-  const {email, password} = req.body;
+  const { email, password } = req.body;
   if (!email || !password) {
-    throw new BadRequestError("Please provide your email and password")
+    throw new BadRequestError("Please provide your email and password");
   }
 
-  const user = await UserModel.findOne({email}).select("+password");
+  const user = await UserModel.findOne({ email }).select("+password");
+  if (!user) {
+    throw new UnauthorizedError("Authentication failed!");
+  }
+
+  // Comparing the user's original and current password
+  const passwordIsCorrect = await user.comparePasswords(password);
+  if (!passwordIsCorrect) {
+    throw new UnauthorizedError("Incorrect password!")
+  }
 
   const token = user.createJWT();
   user.password = undefined;
@@ -46,8 +57,8 @@ const login = async (req, res, next) => {
     status: "success",
     token,
     user,
-    location: user.userLocation
-  })
+    location: user.userLocation,
+  });
 };
 
 const updateUser = async (req, res, next) => {
