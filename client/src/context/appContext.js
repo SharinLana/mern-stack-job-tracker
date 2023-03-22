@@ -116,6 +116,11 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const logoutUser = () => {
+    dispatch({ type: LOGOUT_USER });
+    removeUserFromLocalStorage();
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -126,6 +131,7 @@ const AppProvider = ({ children }) => {
         setEditJob,
         registerUser,
         loginUser,
+        logoutUser,
       }}
     >
       {children}
