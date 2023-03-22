@@ -43,6 +43,12 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SET_EDIT_JOB, payload: { isEditing: boolean } });
   };
 
+  // USER
+
+  const registerUser = async (currentUser) => {
+    console.log(currentUser);
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -51,6 +57,7 @@ const AppProvider = ({ children }) => {
         showProfileEditingInputs,
         saveProfileChanges,
         setEditJob,
+        registerUser,
       }}
     >
       {children}
