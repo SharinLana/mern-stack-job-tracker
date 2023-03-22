@@ -1,10 +1,22 @@
 import { initialState } from "./appContext";
 
-import { TOGGLE_SIDEBAR, PROFILE_EDITING, SAVE_PROFILE_CHANGES, SET_EDIT_JOB } from "./actions";
+import {
+  TOGGLE_SIDEBAR,
+  PROFILE_EDITING,
+  SAVE_PROFILE_CHANGES,
+  SET_EDIT_JOB,
+  REGISTER_USER_BEGIN,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_ERROR,
+} from "./actions";
 
 const reducer = (state, action) => {
   if (action.type === TOGGLE_SIDEBAR) {
-    return { ...state, showSidebar: !state.showSidebar, showLargeSidebar: !state.showLargeSidebar };
+    return {
+      ...state,
+      showSidebar: !state.showSidebar,
+      showLargeSidebar: !state.showLargeSidebar,
+    };
   }
 
   if (action.type === PROFILE_EDITING) {

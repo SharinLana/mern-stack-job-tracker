@@ -6,6 +6,9 @@ import {
   PROFILE_EDITING,
   SAVE_PROFILE_CHANGES,
   SET_EDIT_JOB,
+  REGISTER_USER_BEGIN,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_ERROR,
 } from "./actions";
 
 const initialState = {
@@ -13,6 +16,10 @@ const initialState = {
   showSidebar: false,
   isProfileInputsActive: false,
   isEditing: false,
+
+  user: null,
+  token: null,
+  userLocation: "",
 };
 
 const AppContext = React.createContext();
@@ -33,7 +40,7 @@ const AppProvider = ({ children }) => {
   };
 
   const setEditJob = (boolean) => {
-    dispatch({ type: SET_EDIT_JOB, payload: {isEditing: boolean} });
+    dispatch({ type: SET_EDIT_JOB, payload: { isEditing: boolean } });
   };
 
   return (
