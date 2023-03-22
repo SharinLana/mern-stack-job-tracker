@@ -53,8 +53,24 @@ const AppProvider = ({ children }) => {
   // USER
 
   const registerUser = async (currentUser) => {
-    console.log(currentUser);
-  }
+    dispatch({ type: REGISTER_USER_BEGIN });
+
+    try {
+      const response = await authFetch.post("/auth/register", currentUser);
+      const { user, token, userLocation } = response.data;
+
+      dispatch({
+        type: REGISTER_USER_SUCCESS,
+        payload: { user, token, userLocation },
+      });
+    } catch (error) {
+      console.log(error.response);
+      dispatch({
+        type: REGISTER_USER_ERROR,
+        payload: { message: error.response.data.message },
+      });
+    }
+  };
 
   return (
     <AppContext.Provider
