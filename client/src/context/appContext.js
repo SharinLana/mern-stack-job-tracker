@@ -13,6 +13,7 @@ import {
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
+  LOGOUT_USER,
 } from "./actions";
 
 const token = localStorage.getItem("token");
