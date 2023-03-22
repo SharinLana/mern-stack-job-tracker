@@ -93,9 +93,27 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  const loginUser = (currentUser) => {
-    console.log(currentUser);
-  }
+  const loginUser = async (currentUser) => {
+    dispatch({ type: LOGIN_USER_BEGIN });
+
+    try {
+      const response = await authFetch.post("/auth/login", currentUser);
+      const { user, token, userLocation } = response.data;
+
+      dispatch({
+        type: LOGIN_USER_SUCCESS,
+        payload: { user, token, userLocation },
+      });
+
+      addUserToLocalStorage({ user, token, userLocation });
+    } catch (error) {
+      console.log(error.response);
+      dispatch({
+        type: LOGIN_USER_ERROR,
+        payload: { message: error.response.data.message },
+      });
+    }
+  };
 
   return (
     <AppContext.Provider

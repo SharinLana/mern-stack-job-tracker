@@ -55,6 +55,27 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === LOGIN_USER_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+
+  if (action.type === LOGIN_USER_SUCCESS) {
+    return {
+      ...state,
+      user: action.payload.user,
+      token: action.payload.token,
+      userLocation: action.payload.userLocation,
+      isLoading: false,
+    };
+  }
+
+  if (action.type === LOGIN_USER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+    };
+  }
+
   throw new Error(`No such action: ${action.type}`);
 };
 
