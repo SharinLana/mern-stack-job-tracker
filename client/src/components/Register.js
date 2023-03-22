@@ -16,7 +16,7 @@ const initialState = {
 
 const Register = () => {
   const [inputValue, setInputValue] = useState(initialState);
-  const { registerUser } = useAppContext();
+  const { registerUser, isLoading } = useAppContext();
 
   const getInputValueHandler = (e) => {
     setInputValue((currentValues) => {
@@ -128,8 +128,8 @@ const Register = () => {
             />
           </div>
 
-          <button type="submit" className="submit-btn">
-            Submit
+          <button type="submit" className="submit-btn" disabled={isLoading}>
+            {isLoading ? "Submitting..." : "Submit"}
           </button>
 
           <p>

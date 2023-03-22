@@ -16,6 +16,7 @@ const initialState = {
   showSidebar: false,
   isProfileInputsActive: false,
   isEditing: false,
+  isLoading: false,
 
   user: null,
   token: null,
