@@ -1,4 +1,5 @@
 import React, { useContext, useReducer } from "react";
+import axios from "axios";
 import reducer from "./reducers";
 
 import {
@@ -27,6 +28,11 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  //! axios - global setup
+  const authFetch = axios.create({
+    baseURL: "http://localhost:5060/api/v1",
+  });
 
   const toggleSidebar = () => {
     dispatch({ type: TOGGLE_SIDEBAR });
