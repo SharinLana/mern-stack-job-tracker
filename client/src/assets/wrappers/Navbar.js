@@ -46,9 +46,9 @@ const Wrapper = styled.div`
 
   .dropdown {
     position: absolute;
-    top: 60px;
-    right: 25px;
-    width: 140px;
+    top: 40px;
+    left: 0px;
+    width: 100%;
     height: 40px;
     background: #eb55bed5;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);

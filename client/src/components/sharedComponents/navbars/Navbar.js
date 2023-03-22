@@ -23,16 +23,16 @@ const Navbar = () => {
 
         <h2>Dashboard</h2>
 
-        <button className="user-btn" onClick={() => setShowLogout(!showLogout)}>
+        <button className="user-btn" onMouseOver={() => setShowLogout(true)} onMouseOut={() => setShowLogout(false)}>
           <FaUserCircle size={20} />
           <span className="user-name">{user?.firstName}</span>
           <FaCaretDown size={20} />
+          <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
+            <button onClick={logoutBtnHandler} className="dropdown-btn">
+              logout
+            </button>
+          </div>
         </button>
-        <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
-          <button onClick={logoutBtnHandler} className="dropdown-btn">
-            logout
-          </button>
-        </div>
       </div>
     </Wrapper>
   );
