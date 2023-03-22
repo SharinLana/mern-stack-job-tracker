@@ -50,23 +50,33 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SET_EDIT_JOB, payload: { isEditing: boolean } });
   };
 
+  const addUserToLocalStorage = ({ user, token, userLocation }) => {
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("token", token);
+    localStorage.setItem("location", userLocation);
+  };
+
+  const removeUserFromLocalStorage = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    localStorage.removeItem("location");
+  };
+
   // USER
 
   const registerUser = async (currentUser) => {
     dispatch({ type: REGISTER_USER_BEGIN });
 
     try {
-      const response = await authFetch.post(
-        "/auth/register",
-        currentUser
-      );
-      console.log(response)
+      const response = await authFetch.post("/auth/register", currentUser);
       const { user, token, userLocation } = response.data;
 
       dispatch({
         type: REGISTER_USER_SUCCESS,
         payload: { user, token, userLocation },
       });
+
+      addUserToLocalStorage(user, token, userLocation);
     } catch (error) {
       console.log(error.response);
       dispatch({
