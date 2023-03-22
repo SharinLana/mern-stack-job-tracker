@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaAlignLeft, FaUserCircle, FaCaretDown } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import Wrapper from "../../../assets/wrappers/Navbar";
 import { useAppContext } from "../../../context/appContext";
 
 const Navbar = () => {
-  const { toggleSidebar, user } = useAppContext();
+  const { toggleSidebar, user, logoutUser } = useAppContext();
+  const [showLogout, setShowLogout] = useState(false);
+  const navigate = useNavigate();
+
+  const logoutBtnHandler = () => {
+    logoutUser();
+    navigate("/landing");
+  };
 
   return (
     <Wrapper>
@@ -15,11 +23,16 @@ const Navbar = () => {
 
         <h2>Dashboard</h2>
 
-        <button className="user-btn">
+        <button className="user-btn" onClick={() => setShowLogout(!showLogout)}>
           <FaUserCircle size={20} />
-          <span className="user-name">{user.firstName}</span>
+          <span className="user-name">{user?.firstName}</span>
           <FaCaretDown size={20} />
         </button>
+        <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>
+          <button onClick={logoutBtnHandler} className="dropdown-btn">
+            logout
+          </button>
+        </div>
       </div>
     </Wrapper>
   );

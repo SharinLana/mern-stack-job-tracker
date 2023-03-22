@@ -25,13 +25,15 @@ const Wrapper = styled.div`
   }
 
   h2 {
-    display: none
+    display: none;
   }
 
   .user-btn {
-    background-color: #716F81;
+    position: relative;
+    width: 140px;
+    background-color: #716f81;
     padding: 10px 20px;
-    border-radius: 6px;
+    border-radius: 2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,13 +44,41 @@ const Wrapper = styled.div`
     font-size: 16px;
   }
 
+  .dropdown {
+    position: absolute;
+    top: 60px;
+    right: 25px;
+    width: 140px;
+    height: 40px;
+    background: #eb55bed5;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    border-radius: 2px;
+  }
+  .show-dropdown {
+    visibility: visible;
+  }
+  .dropdown-btn {
+    background: transparent;
+    border-color: transparent;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    font-size: 18px;
+    cursor: pointer;
+    transition: none;
+  }
+
   @media all and (min-width: 800px) {
     h2 {
       display: block;
       color: #eb55bed5;
       font-size: 30px;
       margin: 0px;
-      margin-left: 150px
+      margin-left: 150px;
     }
   }
 `;
