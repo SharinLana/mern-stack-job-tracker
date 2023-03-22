@@ -12,6 +12,10 @@ import {
   REGISTER_USER_ERROR,
 } from "./actions";
 
+const token = localStorage.getItem("token");
+const user = localStorage.getItem("user");
+const userLocation = localStorage.getItem("location");
+
 const initialState = {
   showLargeSidebar: false,
   showSidebar: false,
@@ -19,9 +23,9 @@ const initialState = {
   isEditing: false,
   isLoading: false,
 
-  user: null,
-  token: null,
-  userLocation: "",
+  user: user ? JSON.parse(user) : null,
+  token: token,
+  userLocation: userLocation || "",
 };
 
 const AppContext = React.createContext();
@@ -76,7 +80,7 @@ const AppProvider = ({ children }) => {
         payload: { user, token, userLocation },
       });
 
-      addUserToLocalStorage(user, token, userLocation);
+      addUserToLocalStorage({ user, token, userLocation });
     } catch (error) {
       console.log(error.response);
       dispatch({
