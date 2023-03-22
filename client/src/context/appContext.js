@@ -31,7 +31,7 @@ const AppProvider = ({ children }) => {
 
   //! axios - global setup
   const authFetch = axios.create({
-    baseURL: "http://localhost:5060/api/v1",
+    baseURL: "http://localhost:9000/api/v1",
   });
 
   const toggleSidebar = () => {
@@ -56,7 +56,11 @@ const AppProvider = ({ children }) => {
     dispatch({ type: REGISTER_USER_BEGIN });
 
     try {
-      const response = await authFetch.post("/auth/register", currentUser);
+      const response = await authFetch.post(
+        "/auth/register",
+        currentUser
+      );
+      console.log(response)
       const { user, token, userLocation } = response.data;
 
       dispatch({

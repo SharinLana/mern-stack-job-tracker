@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Wrapper from "../assets/wrappers/Register";
 import { useAppContext } from "../context/appContext";
 import Logo from "./Logo";
@@ -16,7 +17,8 @@ const initialState = {
 
 const Register = () => {
   const [inputValue, setInputValue] = useState(initialState);
-  const { registerUser, isLoading } = useAppContext();
+  const { registerUser, isLoading, user } = useAppContext();
+  const navigate = useNavigate();
 
   const getInputValueHandler = (e) => {
     setInputValue((currentValues) => {
@@ -37,6 +39,15 @@ const Register = () => {
       registerUser(currentUser);
     }
   };
+
+  // Redirecting user to the home page after successful registration
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    }
+  }, [user, navigate]);
 
   const toggleBtnHandler = () => {
     setInputValue((currentValues) => {
@@ -87,13 +98,13 @@ const Register = () => {
 
                 {/* Location */}
                 <FormLabel
-                  name="location"
+                  name="userLocation"
                   labelText="Your location"
                   labelClass="label"
                 />
                 <FormInput
                   type="text"
-                  name="location"
+                  name="userLocation"
                   onGetValue={getInputValueHandler}
                   value={inputValue.userLocation}
                   inputClass="input"

@@ -34,8 +34,8 @@ if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
 
-// Security middleware
 app.use(cors());
+// Security middleware
 app.use(helmet());
 app.use(xss());
 app.set("trust proxy", 1); // for rateLimiter, to enable it when behind the reverse proxy (Heroku, Bluemix, etc)
