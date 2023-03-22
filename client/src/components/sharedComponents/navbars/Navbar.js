@@ -4,7 +4,7 @@ import Wrapper from "../../../assets/wrappers/Navbar";
 import { useAppContext } from "../../../context/appContext";
 
 const Navbar = () => {
-  const { toggleSidebar } = useAppContext();
+  const { toggleSidebar, user } = useAppContext();
 
   return (
     <Wrapper>
@@ -17,7 +17,7 @@ const Navbar = () => {
 
         <button className="user-btn">
           <FaUserCircle size={20} />
-          <span className="user-name">user name</span>
+          <span className="user-name">{user.firstName}</span>
           <FaCaretDown size={20} />
         </button>
       </div>
