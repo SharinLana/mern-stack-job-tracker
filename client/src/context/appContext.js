@@ -14,6 +14,9 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
   LOGOUT_USER,
+  UPDATE_USER_BEGIN,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -121,6 +124,27 @@ const AppProvider = ({ children }) => {
     removeUserFromLocalStorage();
   };
 
+  const updateUser = async (currentUser) => {
+    dispatch({ type: UPDATE_USER_BEGIN });
+
+    try {
+      const response = await authFetch.patch("/auth/updateUser", currentUser);
+      const { user, token, userLocation } = response.data;
+
+      dispatch({
+        type: UPDATE_USER_SUCCESS,
+        payload: { user, token, userLocation },
+      });
+      addUserToLocalStorage({ user, token, userLocation });
+    } catch (error) {
+      console.log(error.response);
+      dispatch({
+        type: UPDATE_USER_ERROR,
+        payload: { message: error.response.data.message },
+      });
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -132,6 +156,7 @@ const AppProvider = ({ children }) => {
         registerUser,
         loginUser,
         logoutUser,
+        updateUser
       }}
     >
       {children}

@@ -12,6 +12,9 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
   LOGOUT_USER,
+  UPDATE_USER_BEGIN,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -83,6 +86,27 @@ const reducer = (state, action) => {
       user: null,
       token: null,
       userLocation: "",
+    };
+  }
+
+  if (action.type === UPDATE_USER_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+
+  if (action.type === UPDATE_USER_SUCCESS) {
+    return {
+      ...state,
+      user: action.payload.user,
+      token: action.payload.token,
+      userLocation: action.payload.userLocation,
+      isLoading: false,
+    };
+  }
+
+  if (action.type === UPDATE_USER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
     };
   }
 

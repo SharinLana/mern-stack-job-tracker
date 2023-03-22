@@ -23,7 +23,11 @@ const Navbar = () => {
 
         <h2>Dashboard</h2>
 
-        <button className="user-btn" onMouseOver={() => setShowLogout(true)} onMouseOut={() => setShowLogout(false)}>
+        <button
+          className="user-btn"
+          onMouseOver={() => setShowLogout(true)}
+          onMouseOut={() => setShowLogout(false)}
+        >
           <FaUserCircle size={20} />
           <span className="user-name">{user?.firstName}</span>
           <FaCaretDown size={20} />
