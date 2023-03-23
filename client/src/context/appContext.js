@@ -256,6 +256,7 @@ const AppProvider = ({ children }) => {
         });
       }
     }
+    clearAlert();
   };
 
   return (
