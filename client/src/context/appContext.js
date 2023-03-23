@@ -78,6 +78,13 @@ const AppProvider = ({ children }) => {
 
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT });
+    clearAlert();
+  };
+
+  const clearAlert = () => {
+    setTimeout(() => {
+      dispatch({ type: CLEAR_ALERT });
+    }, 2000);
   };
 
   const toggleSidebar = () => {
@@ -130,6 +137,8 @@ const AppProvider = ({ children }) => {
         payload: { message: error.response.data.message },
       });
     }
+
+    clearAlert();
   };
 
   const loginUser = async (currentUser) => {
@@ -152,6 +161,8 @@ const AppProvider = ({ children }) => {
         payload: { message: error.response.data.message },
       });
     }
+
+    clearAlert();
   };
 
   const logoutUser = () => {
@@ -180,6 +191,7 @@ const AppProvider = ({ children }) => {
         });
       }
     }
+    clearAlert();
   };
 
   return (

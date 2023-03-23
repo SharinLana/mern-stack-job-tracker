@@ -29,6 +29,15 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === CLEAR_ALERT) {
+    return {
+      ...state,
+      showAlert: false,
+      alertType: "",
+      alertText: "",
+    };
+  }
+
   if (action.type === TOGGLE_SIDEBAR) {
     return {
       ...state,
