@@ -21,6 +21,7 @@ import {
   ADD_JOB_BEGIN,
   ADD_JOB_SUCCESS,
   ADD_JOB_ERROR,
+  CLEAR_VALUES,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -156,6 +157,22 @@ const reducer = (state, action) => {
   // ! JOBS
   if (action.type === GET_INPUT_VALUE) {
     return { ...state, [action.payload.name]: action.payload.value };
+  }
+
+  if (action.type === CLEAR_VALUES) {
+    const initialValues = {
+      company: "",
+      position: "",
+      jobLocation: "",
+      recruiter: "",
+      recruiterEmail: "",
+      salaryMin: 0,
+      salaryMax: 0,
+      interviewScheduledAt: "",
+      jobType: "full-time",
+      status: "pending",
+    };
+    return { ...state, ...initialValues };
   }
 
   if (action.type === ADD_JOB_BEGIN) {

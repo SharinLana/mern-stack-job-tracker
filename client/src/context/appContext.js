@@ -23,6 +23,7 @@ import {
   ADD_JOB_BEGIN,
   ADD_JOB_SUCCESS,
   ADD_JOB_ERROR,
+  CLEAR_VALUES,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -217,6 +218,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: GET_INPUT_VALUE, payload: { name, value } });
   };
 
+  const clearInputValues = () => {
+    dispatch({ type: CLEAR_VALUES });
+  };
+
   const addJob = async () => {
     dispatch({ type: ADD_JOB_BEGIN });
 
@@ -274,6 +279,7 @@ const AppProvider = ({ children }) => {
         updateUser,
         getInputValues,
         addJob,
+        clearInputValues,
       }}
     >
       {children}
