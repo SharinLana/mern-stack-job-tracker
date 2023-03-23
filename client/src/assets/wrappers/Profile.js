@@ -71,7 +71,7 @@ const Wrapper = styled.div`
   .input {
     margin-left: 10px;
     width: 100%;
-    width: 200px;
+    max-width: 200px;
     height: 30px;
     border-radius: 5px;
     outline: none;
@@ -116,6 +116,31 @@ const Wrapper = styled.div`
     background: #39b6e0d2;
     padding: 10px 20px;
     border-radius: 4px;
+  }
+
+  @media all and (max-width: 450px) {
+    .input-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .data {
+      margin: 0px;
+      margin-top: 6px;
+    }
+
+    .label {
+      width: 100%;
+      font-size: 18px;
+      color: #2e2e41d2;
+    }
+
+    .input {
+      margin-left: 0px;
+      max-width: 90%;
+      margin-top: 6px;
+    }
   }
 `;
 
