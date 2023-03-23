@@ -34,6 +34,11 @@ const Register = () => {
     const { firstName, lastName, userLocation, email, password, isMember } =
       inputValue;
 
+    if (!email || !password || (!isMember && (!firstName || !lastName))) {
+      displayAlert();
+      return;
+    }
+
     const currentUser = { firstName, lastName, userLocation, email, password };
     if (isMember) {
       loginUser(currentUser);
