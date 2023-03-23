@@ -84,7 +84,7 @@ const AppProvider = ({ children }) => {
   const clearAlert = () => {
     setTimeout(() => {
       dispatch({ type: CLEAR_ALERT });
-    }, 2000);
+    }, 3000);
   };
 
   const toggleSidebar = () => {
