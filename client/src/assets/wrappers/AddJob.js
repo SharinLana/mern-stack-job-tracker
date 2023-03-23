@@ -52,7 +52,8 @@ const Wrapper = styled.div`
     margin-bottom: 5px;
   }
 
-  .input {
+  .input,
+  .select {
     width: 100%;
     background-color: #39b6e011;
     height: 30px;
@@ -61,6 +62,11 @@ const Wrapper = styled.div`
     border: 1px solid #00aeff64;
     padding-left: 10px;
     font-size: 15px;
+  }
+
+  .select {
+    height: 34px;
+    width: 104%;
   }
 
   .submit-btn {

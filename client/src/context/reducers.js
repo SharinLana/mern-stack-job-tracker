@@ -17,6 +17,7 @@ import {
   UPDATE_USER_BEGIN,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  GET_INPUT_VALUE,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -147,6 +148,11 @@ const reducer = (state, action) => {
       alertType: "danger",
       alertText: action.payload.message,
     };
+  }
+
+  // ! JOBS
+  if (action.type === GET_INPUT_VALUE) {
+    return { ...state, [action.payload.name]: action.payload.value };
   }
 
   throw new Error(`No such action: ${action.type}`);

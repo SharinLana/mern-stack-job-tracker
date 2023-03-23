@@ -19,6 +19,7 @@ import {
   UPDATE_USER_BEGIN,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  GET_INPUT_VALUE,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -31,14 +32,26 @@ const initialState = {
   isProfileInputsActive: false,
   isEditing: false,
   isLoading: false,
-
+  // alerts
   showAlert: false,
   alertType: "",
   alertText: "",
-
+  // user
   user: user ? JSON.parse(user) : null,
   token: token,
   userLocation: userLocation || "",
+  // add a job
+  company: "",
+  position: "",
+  jobLocation: "",
+  recruiter: "",
+  recruiterEmail: "",
+  salary: "",
+  interviewScheduledAt: "",
+  jobType: "full-time",
+  jobTypeOptions: ["full-time", "part-time", "remote", "hybrid"],
+  statusOptions: ["pending", "interview", "declined"],
+  status: "pending",
 };
 
 const AppContext = React.createContext();
@@ -194,6 +207,12 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  // ! JOBS
+
+  const getInputValues = ({ name, value }) => {
+    dispatch({ type: GET_INPUT_VALUE, payload: { name, value } });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -207,6 +226,7 @@ const AppProvider = ({ children }) => {
         loginUser,
         logoutUser,
         updateUser,
+        getInputValues,
       }}
     >
       {children}

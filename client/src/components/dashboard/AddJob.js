@@ -5,16 +5,56 @@ import Logo from "../Logo";
 import FormLabel from "../sharedComponents/FormLabel";
 import FormInput from "../sharedComponents/FormInput";
 import { useAppContext } from "../../context/appContext";
+import SelectField from "../sharedComponents/SelectField";
 
 const AddJob = () => {
-  const { showLargeSidebar, isEditing, setEditJob } = useAppContext();
+  const {
+    showLargeSidebar,
+    isEditing,
+    setEditJob,
+    getInputValues,
+    displayAlert,
+    company,
+    position,
+    jobLocation,
+    recruiter,
+    recruiterEmail,
+    salary,
+    interviewScheduledAt,
+    jobType,
+    jobTypeOptions,
+    statusOptions,
+    status,
+  } = useAppContext();
+
+  console.log(
+    company,
+    // position,
+    // jobLocation,
+    // recruiter,
+    // recruiterEmail,
+    // salary,
+    jobType,
+    status,
+    interviewScheduledAt
+  );
+
   const getInputValueHandler = (e) => {
-    // getInputValue({ name: e.target.name, value: e.target.value });
+    getInputValues({ name: e.target.name, value: e.target.value });
+  };
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+
+    if (!company || !position) {
+      displayAlert();
+      return;
+    }
   };
 
   return (
     <Wrapper move={showLargeSidebar ? "250px" : "0px"}>
-      <form className="form-container">
+      <form className="form-container" onSubmit={formSubmitHandler}>
         <div className="logo-container">
           <Logo />
         </div>
@@ -52,12 +92,16 @@ const AddJob = () => {
 
         {/* Location */}
         <div className="input-container">
-          <FormLabel name="location" labelText="Location:" labelClass="label" />
+          <FormLabel
+            name="jobLocation"
+            labelText="Location:"
+            labelClass="label"
+          />
           <FormInput
             type="text"
-            name="location"
+            name="jobLocation"
             onGetValue={getInputValueHandler}
-            // value={location}
+            // value={jobLocation}
             inputClass="input"
           />
         </div>
@@ -80,12 +124,16 @@ const AddJob = () => {
 
         {/* Recruiter's Email */}
         <div className="input-container">
-          <FormLabel name="email" labelText="Email:" labelClass="label" />
+          <FormLabel
+            name="recruiterEmail"
+            labelText="Email:"
+            labelClass="label"
+          />
           <FormInput
             type="email"
-            name="email"
+            name="recruiterEmail"
             onGetValue={getInputValueHandler}
-            // value={email}
+            // value={recruiterEmail}
             inputClass="input"
           />
         </div>
@@ -108,35 +156,53 @@ const AddJob = () => {
 
         {/* Job Type */}
         <div className="input-container">
-          <FormLabel name="jobType" labelText="Job type:" labelClass="label" />
-          <FormInput
-            type="text"
+          <SelectField
+            labelText="jobType"
             name="jobType"
             onGetValue={getInputValueHandler}
-            // value={jobType}
-            inputClass="input"
+            value={jobType}
+            className="select"
+            options={jobTypeOptions}
           />
         </div>
 
         {/* Job Status */}
         <div className="input-container">
-          <FormLabel
-            name="jobStatus"
-            labelText="Job status:"
-            labelClass="label"
-          />
-          <FormInput
-            type="text"
-            name="jobStatus"
+          <SelectField
+            labelText="Status"
+            name="status"
             onGetValue={getInputValueHandler}
-            // value={jobStatus}
-            required
-            inputClass="input"
+            value={status}
+            className="select"
+            options={statusOptions}
           />
         </div>
 
-        <button type="submit" className="submit-btn" onClick={() => setEditJob(false)}>
-          <Link to="/all-jobs" className="btn-link">{isEditing ? "Save Changes" : "Add Job"}</Link>
+        {/* Interview Scheduled at */}
+        {status === "interview" && (
+          <div className="input-container">
+            <FormLabel
+              name="interviewScheduledAt"
+              labelText="Interview scheduled at:"
+              labelClass="label"
+            />
+            <FormInput
+              type="datetime-local"
+              name="interviewScheduledAt"
+              onGetValue={getInputValueHandler}
+              value={interviewScheduledAt}
+              inputClass="input"
+            />
+          </div>
+        )}
+        <button
+          type="submit"
+          className="submit-btn"
+          onClick={() => setEditJob(false)}
+        >
+          <Link to="/all-jobs" className="btn-link">
+            {isEditing ? "Save Changes" : "Add Job"}
+          </Link>
         </button>
       </form>
     </Wrapper>
