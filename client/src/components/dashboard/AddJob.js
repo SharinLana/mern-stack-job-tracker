@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Wrapper from "../../assets/wrappers/AddJob";
 import Logo from "../Logo";
 import FormLabel from "../sharedComponents/FormLabel";
@@ -9,6 +9,7 @@ import SelectField from "../sharedComponents/SelectField";
 import Alert from "../sharedComponents/Alert";
 
 const AddJob = () => {
+  const navigate = useNavigate();
   const {
     showLargeSidebar,
     showAlert,
@@ -45,6 +46,9 @@ const AddJob = () => {
     }
     addJob();
     setEditJob(false);
+    setTimeout(() => {
+      navigate("/all-jobs");
+    }, 2000);
   };
 
   return (
