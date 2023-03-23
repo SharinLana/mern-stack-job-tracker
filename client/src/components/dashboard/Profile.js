@@ -5,22 +5,23 @@ import FormLabel from "../sharedComponents/FormLabel";
 import { useAppContext } from "../../context/appContext";
 import Logo from "../Logo";
 
-const initialState = {
-  firstName: "Kate",
-  lastName: "Foster",
-  location: "Toronto",
-  email: "kate@test.com",
-  password: "kateSecret",
-};
+// const initialState = {
+//   firstName: "Kate",
+//   lastName: "Foster",
+//   userLocation: "Toronto",
+//   email: "kate@test.com",
+//   password: "kateSecret",
+// };
 
 const Profile = () => {
-  const [inputValue, setInputValue] = useState(initialState);
   const {
     showProfileEditingInputs,
     isProfileInputsActive,
-    saveProfileChanges,
     showLargeSidebar,
+    user,
+    updateUser,
   } = useAppContext();
+  const [inputValue, setInputValue] = useState(user);
 
   const getInputValueHandler = (e) => {
     setInputValue((currentValues) => {
@@ -30,11 +31,15 @@ const Profile = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
+    const { firstName, lastName, userLocation, email } = inputValue;
+
+    const currentUser = { firstName, lastName, userLocation, email };
+    updateUser(currentUser);
   };
 
   return (
     <Wrapper move={showLargeSidebar ? "250px" : "0px"}>
-      <form className="form-container">
+      <form className="form-container" onSubmit={formSubmitHandler}>
         <div className="logo-container">
           <Logo />
         </div>
@@ -58,9 +63,7 @@ const Profile = () => {
             labelClass="label"
           />
 
-          {!isProfileInputsActive && (
-            <p className="data">{initialState.firstName}</p>
-          )}
+          {!isProfileInputsActive && <p className="data">{user.firstName}</p>}
           {isProfileInputsActive && (
             <FormInput
               type="text"
@@ -80,9 +83,7 @@ const Profile = () => {
             labelText="Last Name:"
             labelClass="label"
           />
-          {!isProfileInputsActive && (
-            <p className="data">{initialState.lastName}</p>
-          )}
+          {!isProfileInputsActive && <p className="data">{user.lastName}</p>}
           {isProfileInputsActive && (
             <FormInput
               type="text"
@@ -97,16 +98,20 @@ const Profile = () => {
 
         {/* Location */}
         <div className="input-container">
-          <FormLabel name="location" labelText="Location:" labelClass="label" />
+          <FormLabel
+            name="userLocation"
+            labelText="Location:"
+            labelClass="label"
+          />
           {!isProfileInputsActive && (
-            <p className="data">{initialState.location}</p>
+            <p className="data">{user.userLocation}</p>
           )}
           {isProfileInputsActive && (
             <FormInput
               type="text"
-              name="location"
+              name="userLocation"
               onGetValue={getInputValueHandler}
-              value={inputValue.location}
+              value={inputValue.userLocation}
               inputClass="input"
             />
           )}
@@ -115,9 +120,7 @@ const Profile = () => {
         {/* Email */}
         <div className="input-container">
           <FormLabel name="email" labelText="Email:" labelClass="label" />
-          {!isProfileInputsActive && (
-            <p className="data">{initialState.email}</p>
-          )}
+          {!isProfileInputsActive && <p className="data">{user.email}</p>}
           {isProfileInputsActive && (
             <FormInput
               type="email"
@@ -130,30 +133,8 @@ const Profile = () => {
           )}
         </div>
 
-        {/* Password */}
-        <div className="input-container">
-          <FormLabel name="password" labelText="Password:" labelClass="label" />
-          {!isProfileInputsActive && (
-            <p className="data">{initialState.password}</p>
-          )}
-          {isProfileInputsActive && (
-            <FormInput
-              type="text"
-              name="password"
-              onGetValue={getInputValueHandler}
-              value={inputValue.password}
-              required
-              inputClass="input"
-            />
-          )}
-        </div>
-
         {isProfileInputsActive && (
-          <button
-            type="submit"
-            className="submit-btn"
-            onClick={saveProfileChanges}
-          >
+          <button type="submit" className="submit-btn">
             Save Changes
           </button>
         )}

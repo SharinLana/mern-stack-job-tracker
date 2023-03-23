@@ -45,6 +45,31 @@ const AppProvider = ({ children }) => {
     baseURL: "http://localhost:9000/api/v1",
   });
 
+  //! axios - request
+  authFetch.interceptors.request.use(
+    (config) => {
+      config.headers["Authorization"] = `Bearer ${state.token}`;
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+  //! axios - response
+  authFetch.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      // if the token expired
+      if (error.response.status === 401) {
+        logoutUser();
+      }
+      return Promise.reject(error);
+    }
+  );
+
   const toggleSidebar = () => {
     dispatch({ type: TOGGLE_SIDEBAR });
   };
@@ -145,6 +170,8 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  
+
   return (
     <AppContext.Provider
       value={{
@@ -156,7 +183,7 @@ const AppProvider = ({ children }) => {
         registerUser,
         loginUser,
         logoutUser,
-        updateUser
+        updateUser,
       }}
     >
       {children}

@@ -100,6 +100,7 @@ const reducer = (state, action) => {
       token: action.payload.token,
       userLocation: action.payload.userLocation,
       isLoading: false,
+      isProfileInputsActive: false,
     };
   }
 
