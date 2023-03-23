@@ -29,11 +29,11 @@ const AddJob = () => {
 
   console.log(
     company,
-    // position,
-    // jobLocation,
-    // recruiter,
-    // recruiterEmail,
-    // salary,
+    position,
+    jobLocation,
+    recruiter,
+    recruiterEmail,
+    salary,
     jobType,
     status,
     interviewScheduledAt

@@ -44,9 +44,15 @@ const jobSchema = new mongoose.Schema(
       },
       trim: true,
     },
-    salary: {
-      type: String,
-      default: "$",
+    salaryMin: {
+      type: Number,
+      min: 0,
+      default: 0,
+    },
+    salaryMax: {
+      type: Number,
+      min: 0,
+      default: 0,
     },
     interviewScheduledAt: {
       type: Date,
