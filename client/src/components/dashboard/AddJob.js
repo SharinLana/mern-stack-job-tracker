@@ -215,15 +215,8 @@ const AddJob = () => {
             />
           </div>
         )}
-        <button
-          type="submit"
-          className="submit-btn"
-          disabled={isLoading}
-          // onClick={() => setEditJob(false)}
-        >
-          {/* <Link to="/all-jobs" className="btn-link"> */}
-          {isEditing ? "Save Changes" : "Add Job"}
-          {/* </Link> */}
+        <button type="submit" className="submit-btn" disabled={isLoading}>
+          {isLoading ? "Saving the job..." : "Save"}
         </button>
       </form>
     </Wrapper>
