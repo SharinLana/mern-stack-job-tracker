@@ -4,6 +4,7 @@ import FormInput from "../sharedComponents/FormInput";
 import FormLabel from "../sharedComponents/FormLabel";
 import { useAppContext } from "../../context/appContext";
 import Logo from "../Logo";
+import Alert from "../sharedComponents/Alert";
 
 // const initialState = {
 //   firstName: "Kate",
@@ -20,6 +21,8 @@ const Profile = () => {
     showLargeSidebar,
     user,
     updateUser,
+    showAlert,
+    displayAlert,
   } = useAppContext();
   const [inputValue, setInputValue] = useState(user);
 
@@ -32,6 +35,11 @@ const Profile = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     const { firstName, lastName, userLocation, email } = inputValue;
+
+    if (!firstName || !lastName || !email) {
+      displayAlert();
+      return;
+    }
 
     const currentUser = { firstName, lastName, userLocation, email };
     updateUser(currentUser);
@@ -55,6 +63,9 @@ const Profile = () => {
             Edit
           </button>
         )}
+
+        {showAlert && <Alert />}
+
         {/* First Name */}
         <div className="input-container">
           <FormLabel
