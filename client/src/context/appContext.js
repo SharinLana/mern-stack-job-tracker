@@ -163,14 +163,14 @@ const AppProvider = ({ children }) => {
       addUserToLocalStorage({ user, token, userLocation });
     } catch (error) {
       console.log(error.response);
-      dispatch({
-        type: UPDATE_USER_ERROR,
-        payload: { message: error.response.data.message },
-      });
+      if (error.response.status !== 401) {
+        dispatch({
+          type: UPDATE_USER_ERROR,
+          payload: { message: error.response.data.message },
+        });
+      }
     }
   };
-
-  
 
   return (
     <AppContext.Provider
