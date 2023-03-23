@@ -4,19 +4,18 @@ const Wrapper = styled.div`
   padding: 0.375rem 0.75rem;
   margin-bottom: 1rem;
   border-color: transparent;
-  border-radius: var(--borderRadius);
+  border-radius: 2px;
   text-align: center;
-  letter-spacing: var(--letterSpacing);
+  letter-spacing: 1px;
 
-
-.danger {
-  color: var(--red-dark);
-  background: var(--red-light);
-}
-.success {
-  color: var(--green-dark);
-  background: var(--green-light);
-}
+  .danger {
+    color: #f8d7da;
+    background: #842029;
+  }
+  .success {
+    color: #d1e7dd;
+    background: #0f5132;
+  }
 `;
 
 export default Wrapper;
