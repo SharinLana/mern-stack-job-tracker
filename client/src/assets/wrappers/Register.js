@@ -98,6 +98,27 @@ const Wrapper = styled.div`
     font-size: 22px;
   }
 
+  .alert-container {
+    align-self: center;
+    font-size: 18px;
+    font-family: "Cabin", Sans-Serif;
+    text-align: center;
+    width: 100%;
+  }
+
+  .danger {
+    color: white;
+    background: #e11299;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+  .success {
+    color: white;
+    background: #39b6e0d2;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+
   @media all and (max-width: 400px) {
     form {
       padding: 20px;

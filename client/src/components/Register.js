@@ -5,6 +5,7 @@ import { useAppContext } from "../context/appContext";
 import Logo from "./Logo";
 import FormInput from "./sharedComponents/FormInput";
 import FormLabel from "./sharedComponents/FormLabel";
+import Alert from "./sharedComponents/Alert";
 
 const initialState = {
   firstName: "",
@@ -17,7 +18,8 @@ const initialState = {
 
 const Register = () => {
   const [inputValue, setInputValue] = useState(initialState);
-  const { registerUser, isLoading, user, loginUser } = useAppContext();
+  const { registerUser, isLoading, user, loginUser, showAlert, displayAlert } =
+    useAppContext();
   const navigate = useNavigate();
 
   const getInputValueHandler = (e) => {
@@ -63,6 +65,8 @@ const Register = () => {
             <Logo />
           </div>
           <h2>{inputValue.isMember ? "Login" : "Register"}</h2>
+          {showAlert && <Alert />}
+
           <div className="input-container">
             {!inputValue.isMember && (
               <>
