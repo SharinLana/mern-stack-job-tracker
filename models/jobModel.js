@@ -44,6 +44,14 @@ const jobSchema = new mongoose.Schema(
       },
       trim: true,
     },
+    salary: {
+      type: String,
+      default: "$",
+    },
+    interviewScheduledAt: {
+      type: Date,
+      min: Date.now(),
+    },
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "UserModel",
