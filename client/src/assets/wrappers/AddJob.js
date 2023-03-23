@@ -46,10 +46,25 @@ const Wrapper = styled.div`
     align-items: flex-start;
   }
 
+  .salary-min-max-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .salary-container {
+    flex: 1;
+  }
+
   .label {
     font-size: 18px;
     color: #2e2e41;
     margin-bottom: 5px;
+  }
+
+  .salary-label {
+    font-size: 15px;
   }
 
   .input,
@@ -62,6 +77,10 @@ const Wrapper = styled.div`
     border: 1px solid #00aeff64;
     padding-left: 10px;
     font-size: 15px;
+  }
+
+  .max {
+    margin-left: 10px;
   }
 
   .select {

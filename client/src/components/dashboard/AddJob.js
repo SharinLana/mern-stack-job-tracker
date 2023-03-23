@@ -19,7 +19,8 @@ const AddJob = () => {
     jobLocation,
     recruiter,
     recruiterEmail,
-    salary,
+    salaryMin,
+    salaryMax,
     interviewScheduledAt,
     jobType,
     jobTypeOptions,
@@ -33,7 +34,8 @@ const AddJob = () => {
     jobLocation,
     recruiter,
     recruiterEmail,
-    salary,
+    salaryMin,
+    salaryMax,
     jobType,
     status,
     interviewScheduledAt
@@ -67,7 +69,7 @@ const AddJob = () => {
             type="text"
             name="company"
             onGetValue={getInputValueHandler}
-            // value={company}
+            value={company}
             required
             inputClass="input"
           />
@@ -84,7 +86,7 @@ const AddJob = () => {
             type="text"
             name="position"
             onGetValue={getInputValueHandler}
-            // value={position}
+            value={position}
             required
             inputClass="input"
           />
@@ -101,7 +103,7 @@ const AddJob = () => {
             type="text"
             name="jobLocation"
             onGetValue={getInputValueHandler}
-            // value={jobLocation}
+            value={jobLocation}
             inputClass="input"
           />
         </div>
@@ -117,7 +119,7 @@ const AddJob = () => {
             type="text"
             name="recruiter"
             onGetValue={getInputValueHandler}
-            // value={recruiter}
+            value={recruiter}
             inputClass="input"
           />
         </div>
@@ -133,7 +135,7 @@ const AddJob = () => {
             type="email"
             name="recruiterEmail"
             onGetValue={getInputValueHandler}
-            // value={recruiterEmail}
+            value={recruiterEmail}
             inputClass="input"
           />
         </div>
@@ -145,13 +147,36 @@ const AddJob = () => {
             labelText="Salary range:"
             labelClass="label"
           />
-          <FormInput
-            type="text"
-            name="salary"
-            onGetValue={getInputValueHandler}
-            // value={salary}
-            inputClass="input"
-          />
+          <div className="salary-min-max-container">
+            <div className="input-container salary-container">
+              <FormLabel
+                name="salaryMin"
+                labelText="$ Min:"
+                labelClass="label salary-label"
+              />
+              <FormInput
+                type="number"
+                name="salaryMin"
+                onGetValue={getInputValueHandler}
+                value={salaryMin}
+                inputClass="input "
+              />
+            </div>
+            <div className="input-container salary-container">
+              <FormLabel
+                name="salaryMax"
+                labelText="$ Max:"
+                labelClass="label salary-label"
+              />
+              <FormInput
+                type="number"
+                name="salaryMax"
+                onGetValue={getInputValueHandler}
+                value={salaryMax}
+                inputClass="input max"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Job Type */}

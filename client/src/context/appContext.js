@@ -129,7 +129,7 @@ const AppProvider = ({ children }) => {
     localStorage.removeItem("location");
   };
 
-  // USER
+  //! USER
 
   const registerUser = async (currentUser) => {
     dispatch({ type: REGISTER_USER_BEGIN });
