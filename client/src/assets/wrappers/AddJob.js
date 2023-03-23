@@ -105,6 +105,28 @@ const Wrapper = styled.div`
   .submit-btn:hover {
     background-color: #eb55beb0;
   }
+
+  .alert-container {
+    align-self: center;
+    font-size: 18px;
+    font-family: "Cabin", Sans-Serif;
+    text-align: center;
+    width: 80%;
+    margin: 30px 0px 20px 0px;
+  }
+
+  .danger {
+    color: white;
+    background: #e11298c1;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+  .success {
+    color: white;
+    background: #39b6e0d2;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
 `;
 
 export default Wrapper;

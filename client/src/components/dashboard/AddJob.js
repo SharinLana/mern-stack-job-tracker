@@ -6,11 +6,14 @@ import FormLabel from "../sharedComponents/FormLabel";
 import FormInput from "../sharedComponents/FormInput";
 import { useAppContext } from "../../context/appContext";
 import SelectField from "../sharedComponents/SelectField";
+import Alert from "../sharedComponents/Alert";
 
 const AddJob = () => {
   const {
     showLargeSidebar,
+    showAlert,
     isEditing,
+    isLoading,
     setEditJob,
     getInputValues,
     displayAlert,
@@ -26,6 +29,7 @@ const AddJob = () => {
     jobTypeOptions,
     statusOptions,
     status,
+    addJob,
   } = useAppContext();
 
   const getInputValueHandler = (e) => {
@@ -39,6 +43,8 @@ const AddJob = () => {
       displayAlert();
       return;
     }
+    addJob();
+    setEditJob(false);
   };
 
   return (
@@ -48,6 +54,8 @@ const AddJob = () => {
           <Logo />
         </div>
         <h2>{isEditing ? "Edit Job" : "Add New Job"}</h2>
+
+        {showAlert && <Alert />}
 
         {/* Company */}
         <div className="input-container">
@@ -210,11 +218,12 @@ const AddJob = () => {
         <button
           type="submit"
           className="submit-btn"
-          onClick={() => setEditJob(false)}
+          disabled={isLoading}
+          // onClick={() => setEditJob(false)}
         >
-          <Link to="/all-jobs" className="btn-link">
-            {isEditing ? "Save Changes" : "Add Job"}
-          </Link>
+          {/* <Link to="/all-jobs" className="btn-link"> */}
+          {isEditing ? "Save Changes" : "Add Job"}
+          {/* </Link> */}
         </button>
       </form>
     </Wrapper>
