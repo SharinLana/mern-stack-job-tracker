@@ -18,6 +18,9 @@ import {
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
   GET_INPUT_VALUE,
+  ADD_JOB_BEGIN,
+  ADD_JOB_SUCCESS,
+  ADD_JOB_ERROR,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -153,6 +156,30 @@ const reducer = (state, action) => {
   // ! JOBS
   if (action.type === GET_INPUT_VALUE) {
     return { ...state, [action.payload.name]: action.payload.value };
+  }
+
+  if (action.type === ADD_JOB_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+
+  if (action.type === ADD_JOB_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "success",
+      alertText: "New Job Created!",
+    };
+  }
+
+  if (action.type === ADD_JOB_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.message,
+    };
   }
 
   throw new Error(`No such action: ${action.type}`);

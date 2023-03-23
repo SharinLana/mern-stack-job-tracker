@@ -20,6 +20,9 @@ import {
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
   GET_INPUT_VALUE,
+  ADD_JOB_BEGIN,
+  ADD_JOB_SUCCESS,
+  ADD_JOB_ERROR,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -214,6 +217,47 @@ const AppProvider = ({ children }) => {
     dispatch({ type: GET_INPUT_VALUE, payload: { name, value } });
   };
 
+  const addJob = async () => {
+    dispatch({ type: ADD_JOB_BEGIN });
+
+    try {
+      const {
+        company,
+        position,
+        jobLocation,
+        recruiter,
+        recruiterEmail,
+        salaryMin,
+        salaryMax,
+        interviewScheduledAt,
+        jobType,
+        status,
+      } = state;
+
+      await authFetch.post("/jobs", {
+        company,
+        position,
+        jobLocation,
+        recruiter,
+        recruiterEmail,
+        salaryMin,
+        salaryMax,
+        interviewScheduledAt,
+        jobType,
+        status,
+      });
+
+      dispatch({ type: ADD_JOB_SUCCESS });
+    } catch (error) {
+      if (error.response.status !== 401) {
+        dispatch({
+          type: ADD_JOB_ERROR,
+          payload: { message: error.response.data.message },
+        });
+      }
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -228,6 +272,7 @@ const AppProvider = ({ children }) => {
         logoutUser,
         updateUser,
         getInputValues,
+        addJob,
       }}
     >
       {children}

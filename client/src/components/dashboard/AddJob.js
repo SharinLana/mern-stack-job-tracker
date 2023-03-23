@@ -28,19 +28,6 @@ const AddJob = () => {
     status,
   } = useAppContext();
 
-  console.log(
-    company,
-    position,
-    jobLocation,
-    recruiter,
-    recruiterEmail,
-    salaryMin,
-    salaryMax,
-    jobType,
-    status,
-    interviewScheduledAt
-  );
-
   const getInputValueHandler = (e) => {
     getInputValues({ name: e.target.name, value: e.target.value });
   };
