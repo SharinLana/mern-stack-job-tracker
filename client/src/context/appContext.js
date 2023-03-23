@@ -3,6 +3,8 @@ import axios from "axios";
 import reducer from "./reducers";
 
 import {
+  DISPLAY_ALERT,
+  CLEAR_ALERT,
   TOGGLE_SIDEBAR,
   PROFILE_EDITING,
   SAVE_PROFILE_CHANGES,
@@ -29,6 +31,10 @@ const initialState = {
   isProfileInputsActive: false,
   isEditing: false,
   isLoading: false,
+
+  showAlert: false,
+  alertType: "",
+  alertText: "",
 
   user: user ? JSON.parse(user) : null,
   token: token,
@@ -69,6 +75,10 @@ const AppProvider = ({ children }) => {
       return Promise.reject(error);
     }
   );
+
+  const displayAlert = () => {
+    dispatch({ type: DISPLAY_ALERT });
+  };
 
   const toggleSidebar = () => {
     dispatch({ type: TOGGLE_SIDEBAR });
@@ -176,6 +186,7 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
+        displayAlert,
         toggleSidebar,
         showProfileEditingInputs,
         saveProfileChanges,

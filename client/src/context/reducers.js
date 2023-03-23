@@ -1,6 +1,8 @@
 import { initialState } from "./appContext";
 
 import {
+  DISPLAY_ALERT,
+  CLEAR_ALERT,
   TOGGLE_SIDEBAR,
   PROFILE_EDITING,
   SAVE_PROFILE_CHANGES,
@@ -18,6 +20,15 @@ import {
 } from "./actions";
 
 const reducer = (state, action) => {
+  if (action.type === DISPLAY_ALERT) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: "danger",
+      alertText: "Please provide all values!",
+    };
+  }
+
   if (action.type === TOGGLE_SIDEBAR) {
     return {
       ...state,
@@ -49,6 +60,9 @@ const reducer = (state, action) => {
       token: action.payload.token,
       userLocation: action.payload.userLocation,
       isLoading: false,
+      showAlert: true,
+      alertType: "success",
+      alertText: "You have been registered!",
     };
   }
 
@@ -56,6 +70,9 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.message,
     };
   }
 
@@ -70,6 +87,9 @@ const reducer = (state, action) => {
       token: action.payload.token,
       userLocation: action.payload.userLocation,
       isLoading: false,
+      showAlert: true,
+      alertType: "success",
+      alertText: "Success!",
     };
   }
 
@@ -77,6 +97,9 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.message,
     };
   }
 
@@ -101,6 +124,9 @@ const reducer = (state, action) => {
       userLocation: action.payload.userLocation,
       isLoading: false,
       isProfileInputsActive: false,
+      showAlert: true,
+      alertType: "success",
+      alertText: "Updated successfully!",
     };
   }
 
@@ -108,6 +134,9 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.message,
     };
   }
 
