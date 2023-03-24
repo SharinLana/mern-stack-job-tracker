@@ -252,6 +252,30 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === EDIT_JOB_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+
+  if (action.type === EDIT_JOB_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "success",
+      alertText: "Job successfully edited!",
+    };
+  }
+
+  if (action.type === EDIT_JOB_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: "danger",
+      alertText: action.payload.message,
+    };
+  }
+
   throw new Error(`No such action: ${action.type}`);
 };
 

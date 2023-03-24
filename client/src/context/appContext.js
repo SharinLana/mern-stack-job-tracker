@@ -305,6 +305,47 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SET_EDIT_JOB, payload: { isEditing: boolean, id } });
   };
 
+  const editJob = async () => {
+    dispatch({ type: EDIT_JOB_BEGIN });
+
+    try {
+      const {
+        company,
+        position,
+        jobLocation,
+        recruiter,
+        recruiterEmail,
+        salaryMin,
+        salaryMax,
+        interviewScheduledAt,
+        jobType,
+        jobStatus,
+      } = state;
+
+      await authFetch.patch(`/${state.editJobId}`, {
+        company,
+        position,
+        jobLocation,
+        recruiter,
+        recruiterEmail,
+        salaryMin,
+        salaryMax,
+        interviewScheduledAt,
+        jobType,
+        jobStatus,
+      });
+
+      dispatch({ type: EDIT_JOB_SUCCESS });
+      dispatch({ type: CLEAR_VALUES });
+    } catch (error) {
+      if (error.response.status !== 401) {
+        dispatch({ type: EDIT_JOB_ERROR });
+      }
+    }
+
+    clearAlert();
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -322,6 +363,7 @@ const AppProvider = ({ children }) => {
         addJob,
         clearInputValues,
         getAllJobs,
+        editJob,
       }}
     >
       {children}
