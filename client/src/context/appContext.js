@@ -354,6 +354,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: DELETE_JOB });
     try {
       await authFetch.delete(`/jobs/${id}`);
+      getAllJobs();
     } catch (error) {
       console.log(error.response.data.message);
       // logoutUser();
