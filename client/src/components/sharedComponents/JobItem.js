@@ -14,12 +14,13 @@ const JobItem = ({
   company,
   position,
   jobLocation,
-  rectuiter,
-  email,
-  salary,
+  recruiter,
+  recruiterEmail,
+  salaryMin,
+  salaryMax,
   jobType,
-  jobStatus,
-  interviewScheduled,
+  status,
+  interviewScheduledAt,
   createdAt,
 }) => {
   const { setEditJob } = useAppContext();
@@ -38,16 +39,16 @@ const JobItem = ({
         <JobInfo icon={<FaLocationArrow size={19} />} text={jobLocation} />
         <JobInfo icon={<FaBriefcase size={19} />} text={jobType} />
         <JobInfo icon={<FaCalendarAlt size={19} />} text={createdAt} />
-        <JobInfo icon={<MdOutlineAttachMoney size={23} />} text={salary} />
-        <JobInfo icon={<BsPerson size={23} />} text={rectuiter} />
-        <JobInfo icon={<MdOutlineAlternateEmail size={23} />} text={email} />
-        {interviewScheduled && (
+        <JobInfo icon={<MdOutlineAttachMoney size={23} />} text={`${salaryMin} - ${salaryMax}`} />
+        <JobInfo icon={<BsPerson size={23} />} text={recruiter} />
+        <JobInfo icon={<MdOutlineAlternateEmail size={23} />} text={recruiterEmail} />
+        {interviewScheduledAt && (
           <JobInfo
             icon={<MdOutlineSchedule size={23} />}
-            text={interviewScheduled}
+            text={interviewScheduledAt}
           />
         )}
-        <div className={`status ${jobStatus}`}>{jobStatus}</div>
+        <div className={`status ${status}`}>{status}</div>
       </div>
 
       <footer>
