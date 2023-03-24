@@ -31,6 +31,7 @@ const AddJob = () => {
     statusOptions,
     status,
     addJob,
+    clearInputValues,
   } = useAppContext();
 
   const getInputValueHandler = (e) => {
@@ -48,6 +49,7 @@ const AddJob = () => {
     setEditJob(false);
     setTimeout(() => {
       navigate("/all-jobs");
+      clearInputValues();
     }, 2000);
   };
 
