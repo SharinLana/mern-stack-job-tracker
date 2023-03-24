@@ -350,6 +350,16 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const deleteJob = async (id) => {
+    dispatch({ type: DELETE_JOB });
+    try {
+      await authFetch.delete(`/jobs/${id}`);
+    } catch (error) {
+      console.log(error.response.data.message);
+      // logoutUser();
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -368,6 +378,7 @@ const AppProvider = ({ children }) => {
         clearInputValues,
         getAllJobs,
         editJob,
+        deleteJob,
       }}
     >
       {children}

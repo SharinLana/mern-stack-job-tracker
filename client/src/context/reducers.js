@@ -277,6 +277,10 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === DELETE_JOB) {
+    return { ...state, isLoading: true };
+  }
+
   throw new Error(`No such action: ${action.type}`);
 };
 
