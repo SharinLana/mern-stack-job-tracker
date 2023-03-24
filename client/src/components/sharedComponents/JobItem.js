@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import { Link } from "react-router-dom";
 import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
 import { BsPerson } from "react-icons/bs";
@@ -24,7 +25,9 @@ const JobItem = ({
   createdAt,
 }) => {
   const { setEditJob } = useAppContext();
-
+  let dateOfCreation = moment(createdAt).format("MMM Do, YYYY");
+  let interviewDate = moment(interviewScheduledAt).format("MMM Do, YYYY");
+  
   return (
     <div className="job-container">
       <header>
@@ -38,21 +41,34 @@ const JobItem = ({
       <div className="job-middle-container">
         <JobInfo icon={<FaLocationArrow size={19} />} text={jobLocation} />
         <JobInfo icon={<FaBriefcase size={19} />} text={jobType} />
-        <JobInfo icon={<FaCalendarAlt size={19} />} text={createdAt} />
-        <JobInfo icon={<MdOutlineAttachMoney size={23} />} text={`${salaryMin} - ${salaryMax}`} />
+        <JobInfo
+          icon={<FaCalendarAlt size={19} />}
+          text={dateOfCreation}
+        />
+        <JobInfo
+          icon={<MdOutlineAttachMoney size={23} />}
+          text={`${salaryMin} - ${salaryMax}`}
+        />
         <JobInfo icon={<BsPerson size={23} />} text={recruiter} />
-        <JobInfo icon={<MdOutlineAlternateEmail size={23} />} text={recruiterEmail} />
+        <JobInfo
+          icon={<MdOutlineAlternateEmail size={23} />}
+          text={recruiterEmail}
+        />
         {interviewScheduledAt && (
           <JobInfo
             icon={<MdOutlineSchedule size={23} />}
-            text={interviewScheduledAt}
+            text={interviewDate}
           />
         )}
         <div className={`status ${status}`}>{status}</div>
       </div>
 
       <footer>
-        <Link to="/add-job" className="btn edit-btn" onClick={() => setEditJob(true)}>
+        <Link
+          to="/add-job"
+          className="btn edit-btn"
+          onClick={() => setEditJob(true)}
+        >
           Edit
         </Link>
         <button type="button" className="btn delete-btn">
