@@ -63,6 +63,11 @@ const initialState = {
   searchJobType: "all", 
   sort: "latest",
   sortOptions: ["latest", "oldest", "a-z", "z-a"],
+  // all jobs
+  jobs: [],
+  totalJobs: 0,
+  page: 1,
+  numOfPages: 1,
 };
 
 const AppContext = React.createContext();
