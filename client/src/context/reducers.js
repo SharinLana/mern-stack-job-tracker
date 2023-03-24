@@ -1,7 +1,6 @@
 import moment from "moment";
 import { initialState } from "./appContext";
 
-
 import {
   DISPLAY_ALERT,
   CLEAR_ALERT,
@@ -26,6 +25,9 @@ import {
   CLEAR_VALUES,
   GET_JOBS_BEGIN,
   GET_JOBS_SUCCESS,
+  EDIT_JOB_BEGIN,
+  EDIT_JOB_SUCCESS,
+  EDIT_JOB_ERROR,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -229,7 +231,9 @@ const reducer = (state, action) => {
       salaryMin,
     } = job;
 
-    const normalizedDate = moment(interviewScheduledAt).format("yyyy-MM-DDThh:mm:ss.SSS")
+    const normalizedDate = moment(interviewScheduledAt).format(
+      "yyyy-MM-DDThh:mm:ss.SSS"
+    );
 
     return {
       ...state,
