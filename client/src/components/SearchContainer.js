@@ -7,7 +7,16 @@ import SelectField from "./sharedComponents/SelectField";
 import Logo from "./Logo";
 
 const SearchContainer = () => {
-  const { showLargeSidebar } = useAppContext();
+  const {
+    showLargeSidebar,
+    jobTypeOptions,
+    statusOptions,
+    search,
+    searchJobStatus,
+    searchJobType,
+    sort,
+    sortOptions,
+  } = useAppContext();
 
   const getInputValueHandler = (e) => {
     // getInputValue({ name: e.target.name, value: e.target.value });
@@ -26,49 +35,44 @@ const SearchContainer = () => {
               type="text"
               name="serach"
               onGetValue={getInputValueHandler}
-              // value={}
+              value={search}
               inputClass="input"
             />
           </div>
 
           {/* Job Type */}
           <div className="input-container">
-            <FormLabel
-              name="jobType"
-              labelText="Job type:"
-              labelClass="label"
-            />
             <SelectField
-              options={["all", "remote", "full-time", "part-time", "hybrid"]}
+              labelText="Job type:"
+              name="jobType"
               onGetValue={getInputValueHandler}
-              // value={}
+              value={searchJobType}
               className="select"
+              options={jobTypeOptions}
             />
           </div>
 
           {/* Job Status */}
           <div className="input-container">
-            <FormLabel
-              name="jobStatus"
-              labelText="Job status:"
-              labelClass="label"
-            />
             <SelectField
-              options={["all", "pending", "interview", "declined"]}
+              labelText="Job status:"
+              name="status"
               onGetValue={getInputValueHandler}
-              // value={}
+              value={searchJobStatus}
               className="select"
+              options={statusOptions}
             />
           </div>
 
           {/* Sort by */}
           <div className="input-container">
-            <FormLabel name="sortBy" labelText="Sort by:" labelClass="label" />
             <SelectField
-              options={["latest", "oldest", "a-z", "z-a"]}
+              labelText="Sort by:"
+              name="sort"
               onGetValue={getInputValueHandler}
-              // value={}
+              value={sort}
               className="select"
+              options={sortOptions}
             />
           </div>
           <div className="btn-container">

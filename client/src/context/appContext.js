@@ -54,9 +54,15 @@ const initialState = {
   salaryMax: 0,
   interviewScheduledAt: "",
   jobType: "full-time",
-  jobTypeOptions: ["full-time", "part-time", "remote", "hybrid"],
-  statusOptions: ["pending", "interview", "declined"],
+  jobTypeOptions: ["all", "full-time", "part-time", "remote", "hybrid"],
+  statusOptions: ["all", "pending", "interview", "declined"],
   status: "pending",
+  // searching jobs
+  search: "",
+  searchJobStatus: "all", 
+  searchJobType: "all", 
+  sort: "latest",
+  sortOptions: ["latest", "oldest", "a-z", "z-a"],
 };
 
 const AppContext = React.createContext();
