@@ -34,11 +34,18 @@ const AddJob = () => {
     clearInputValues,
     editJob,
   } = useAppContext();
-  console.log(isEditing)
+  console.log(isEditing);
 
   const getInputValueHandler = (e) => {
     getInputValues({ name: e.target.name, value: e.target.value });
   };
+
+  const navigateToAllJobs = () => {
+    setTimeout(() => {
+      navigate("/all-jobs");
+      clearInputValues();
+    }, 1800);
+  }
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
@@ -50,16 +57,14 @@ const AddJob = () => {
 
     if (isEditing) {
       editJob();
+      navigateToAllJobs()
       return;
     }
 
     addJob();
     setEditJob(false);
 
-    setTimeout(() => {
-      navigate("/all-jobs");
-      clearInputValues();
-    }, 2000);
+    navigateToAllJobs()
   };
 
   return (
