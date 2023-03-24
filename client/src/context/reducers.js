@@ -1,4 +1,6 @@
+import moment from "moment";
 import { initialState } from "./appContext";
+
 
 import {
   DISPLAY_ALERT,
@@ -227,12 +229,14 @@ const reducer = (state, action) => {
       salaryMin,
     } = job;
 
+    const normalizedDate = moment(interviewScheduledAt).format("yyyy-MM-DDThh:mm:ss.SSS")
+
     return {
       ...state,
       isEditing: action.payload.isEditing,
       editJobId: _id,
       company,
-      interviewScheduledAt,
+      interviewScheduledAt: normalizedDate,
       jobLocation,
       jobStatus,
       jobType,
