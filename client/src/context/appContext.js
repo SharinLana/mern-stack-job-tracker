@@ -24,6 +24,8 @@ import {
   ADD_JOB_SUCCESS,
   ADD_JOB_ERROR,
   CLEAR_VALUES,
+  GET_JOBS_BEGIN,
+  GET_JOBS_SUCCESS,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -59,8 +61,8 @@ const initialState = {
   status: "pending",
   // searching jobs
   search: "",
-  searchJobStatus: "all", 
-  searchJobType: "all", 
+  searchJobStatus: "all",
+  searchJobType: "all",
   sort: "latest",
   sortOptions: ["latest", "oldest", "a-z", "z-a"],
   // all jobs
@@ -275,6 +277,30 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const getAllJobs = async () => {
+    const { page, search, searchJobStatus, searchJobType, sort } = state;
+    let url = `/jobs?page=${page}&jobType=${searchJobType}&jobStatus=${searchJobStatus}&sort=${sort}`;
+    if (search) {
+      url = url + `&search=${search}`;
+    }
+
+    dispatch({ type: GET_JOBS_BEGIN });
+
+    try {
+      const response = await authFetch(url);
+      const { jobs, totalJobs, numOfPages } = response.data;
+
+      dispatch({
+        type: GET_JOBS_SUCCESS,
+        payload: { jobs, totalJobs, numOfPages },
+      });
+    } catch (error) {
+      console.log(error.response.data);
+      // logoutUser();
+    }
+    clearAlert();
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -291,6 +317,7 @@ const AppProvider = ({ children }) => {
         getInputValues,
         addJob,
         clearInputValues,
+        getAllJobs,
       }}
     >
       {children}

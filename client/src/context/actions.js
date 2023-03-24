@@ -28,3 +28,7 @@ export const CLEAR_VALUES = "CLEAR_VALUES";
 export const ADD_JOB_BEGIN = "ADD_JOB_BEGIN";
 export const ADD_JOB_SUCCESS = "ADD_JOB_SUCCESS";
 export const ADD_JOB_ERROR = "ADD_JOB_ERROR";
+
+export const GET_JOBS_BEGIN = "GET_JOBS_BEGIN";
+export const GET_JOBS_SUCCESS = "GET_JOBS_SUCCESS";
+
