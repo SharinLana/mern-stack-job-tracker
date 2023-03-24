@@ -36,7 +36,7 @@ const JobsContainer = () => {
         })}
       </div>
       {/* Pages later*/}
-      <PageBtnsContainer />
+      {numOfPages > 1 && <PageBtnsContainer />}
     </Wrapper>
   );
 };
