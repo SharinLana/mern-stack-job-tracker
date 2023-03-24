@@ -32,7 +32,9 @@ const AddJob = () => {
     jobStatus,
     addJob,
     clearInputValues,
+    editJob,
   } = useAppContext();
+  console.log(isEditing)
 
   const getInputValueHandler = (e) => {
     getInputValues({ name: e.target.name, value: e.target.value });
@@ -45,8 +47,15 @@ const AddJob = () => {
       displayAlert();
       return;
     }
+
+    if (isEditing) {
+      editJob();
+      return;
+    }
+
     addJob();
     setEditJob(false);
+
     setTimeout(() => {
       navigate("/all-jobs");
       clearInputValues();
