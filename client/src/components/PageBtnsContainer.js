@@ -7,12 +7,26 @@ const PageBtnsContainer = () => {
   const pages = Array.from({ length: numOfPages }, (_, index) => {
     return index + 1;
   });
-  
+
   return (
     <div>
-      <button>Prev</button>
-      <div></div>
-      <button>Next</button>
+      <button>
+        <HiChevronDoubleLeft />
+        Prev
+      </button>
+      <div>
+        {pages.map((pageNumber) => {
+          return (
+            <button type="button" key={pageNumber}>
+              {pageNumber}
+            </button>
+          );
+        })}
+      </div>
+      <button>
+        Next
+        <HiChevronDoubleRight />
+      </button>
     </div>
   );
 };
