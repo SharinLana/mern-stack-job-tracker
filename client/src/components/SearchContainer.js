@@ -16,10 +16,11 @@ const SearchContainer = () => {
     searchJobType,
     sort,
     sortOptions,
+    getInputValues,
   } = useAppContext();
 
   const getInputValueHandler = (e) => {
-    // getInputValue({ name: e.target.name, value: e.target.value });
+    getInputValues({ name: e.target.name, value: e.target.value });
   };
 
   return (
@@ -33,7 +34,7 @@ const SearchContainer = () => {
             <FormLabel name="search" labelText="Search:" labelClass="label" />
             <FormInput
               type="text"
-              name="serach"
+              name="search"
               onGetValue={getInputValueHandler}
               value={search}
               inputClass="input"
@@ -44,11 +45,11 @@ const SearchContainer = () => {
           <div className="input-container">
             <SelectField
               labelText="Job type:"
-              name="jobType"
+              name="searchJobType"
               onGetValue={getInputValueHandler}
               value={searchJobType}
               className="select"
-              options={jobTypeOptions}
+              options={["all", ...jobTypeOptions]}
             />
           </div>
 
@@ -56,11 +57,11 @@ const SearchContainer = () => {
           <div className="input-container">
             <SelectField
               labelText="Job status:"
-              name="status"
+              name="searchJobStatus"
               onGetValue={getInputValueHandler}
               value={searchJobStatus}
               className="select"
-              options={statusOptions}
+              options={["all", ...statusOptions]}
             />
           </div>
 
@@ -76,9 +77,6 @@ const SearchContainer = () => {
             />
           </div>
           <div className="btn-container">
-            <button type="submit" className="search-btn search">
-              Search
-            </button>
             <button type="button" className="search-btn clear">
               Clear
             </button>

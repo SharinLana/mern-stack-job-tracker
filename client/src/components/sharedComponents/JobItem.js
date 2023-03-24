@@ -20,14 +20,14 @@ const JobItem = ({
   salaryMin,
   salaryMax,
   jobType,
-  status,
+  jobStatus,
   interviewScheduledAt,
   createdAt,
 }) => {
   const { setEditJob } = useAppContext();
   let dateOfCreation = moment(createdAt).format("MMM Do, YYYY");
   let interviewDate = moment(interviewScheduledAt).format("MMM Do, YYYY");
-  
+
   return (
     <div className="job-container">
       <header>
@@ -41,10 +41,7 @@ const JobItem = ({
       <div className="job-middle-container">
         <JobInfo icon={<FaLocationArrow size={19} />} text={jobLocation} />
         <JobInfo icon={<FaBriefcase size={19} />} text={jobType} />
-        <JobInfo
-          icon={<FaCalendarAlt size={19} />}
-          text={dateOfCreation}
-        />
+        <JobInfo icon={<FaCalendarAlt size={19} />} text={dateOfCreation} />
         <JobInfo
           icon={<MdOutlineAttachMoney size={23} />}
           text={`${salaryMin} - ${salaryMax}`}
@@ -60,7 +57,7 @@ const JobItem = ({
             text={interviewDate}
           />
         )}
-        <div className={`status ${status}`}>{status}</div>
+        <div className={`status ${jobStatus}`}>{jobStatus}</div>
       </div>
 
       <footer>

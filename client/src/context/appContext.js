@@ -56,9 +56,9 @@ const initialState = {
   salaryMax: 0,
   interviewScheduledAt: "",
   jobType: "full-time",
-  jobTypeOptions: ["all", "full-time", "part-time", "remote", "hybrid"],
-  statusOptions: ["all", "pending", "interview", "declined"],
-  status: "pending",
+  jobTypeOptions: ["full-time", "part-time", "remote", "hybrid"],
+  statusOptions: ["pending", "interview", "declined"],
+  jobStatus: "pending",
   // searching jobs
   search: "",
   searchJobStatus: "all",
@@ -249,7 +249,7 @@ const AppProvider = ({ children }) => {
         salaryMax,
         interviewScheduledAt,
         jobType,
-        status,
+        jobStatus,
       } = state;
 
       await authFetch.post("/jobs", {
@@ -262,7 +262,7 @@ const AppProvider = ({ children }) => {
         salaryMax,
         interviewScheduledAt,
         jobType,
-        status,
+        jobStatus,
       });
 
       dispatch({ type: ADD_JOB_SUCCESS });

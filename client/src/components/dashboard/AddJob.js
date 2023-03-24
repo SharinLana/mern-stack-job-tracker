@@ -29,7 +29,7 @@ const AddJob = () => {
     jobType,
     jobTypeOptions,
     statusOptions,
-    status,
+    jobStatus,
     addJob,
     clearInputValues,
   } = useAppContext();
@@ -183,7 +183,7 @@ const AddJob = () => {
         {/* Job Type */}
         <div className="input-container">
           <SelectField
-            labelText="jobType"
+            labelText="Job Type"
             name="jobType"
             onGetValue={getInputValueHandler}
             value={jobType}
@@ -195,17 +195,17 @@ const AddJob = () => {
         {/* Job Status */}
         <div className="input-container">
           <SelectField
-            labelText="Status"
-            name="status"
+            labelText="Job Status"
+            name="jobStatus"
             onGetValue={getInputValueHandler}
-            value={status}
+            value={jobStatus}
             className="select"
             options={statusOptions}
           />
         </div>
 
         {/* Interview Scheduled at */}
-        {status === "interview" && (
+        {jobStatus === "interview" && (
           <div className="input-container">
             <FormLabel
               name="interviewScheduledAt"
