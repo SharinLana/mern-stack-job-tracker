@@ -8,9 +8,23 @@ const PageBtnsContainer = () => {
     return index + 1;
   });
 
+  const prevPage = () => {
+    let newPage = page - 1;
+    if (newPage < 1) {
+      newPage = numOfPages;
+    }
+  };
+
+  const nextPage = () => {
+    let newPage = page + 1;
+    if (newPage > numOfPages) {
+      newPage = 1;
+    }
+  };
+
   return (
     <div>
-      <button>
+      <button type="button" onClick={prevPage}>
         <HiChevronDoubleLeft />
         Prev
       </button>
@@ -23,7 +37,7 @@ const PageBtnsContainer = () => {
           );
         })}
       </div>
-      <button>
+      <button type="button" onClick={nextPage}>
         Next
         <HiChevronDoubleRight />
       </button>
