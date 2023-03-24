@@ -362,6 +362,10 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const changePage = (page) => {
+    dispatch({ type: CHANGE_PAGE, payload: { page } });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -381,6 +385,7 @@ const AppProvider = ({ children }) => {
         getAllJobs,
         editJob,
         deleteJob,
+        changePage,
       }}
     >
       {children}

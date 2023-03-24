@@ -282,6 +282,10 @@ const reducer = (state, action) => {
     return { ...state, isLoading: true };
   }
 
+  if (action.type === CHANGE_PAGE) {
+    return { ...state, page: action.payload.page };
+  }
+
   throw new Error(`No such action: ${action.type}`);
 };
 
