@@ -47,6 +47,7 @@ const initialState = {
   token: token,
   userLocation: userLocation || "",
   // add a job
+  editJobId: "",
   company: "",
   position: "",
   jobLocation: "",
@@ -128,10 +129,6 @@ const AppProvider = ({ children }) => {
 
   const saveProfileChanges = () => {
     dispatch({ type: SAVE_PROFILE_CHANGES });
-  };
-
-  const setEditJob = (boolean) => {
-    dispatch({ type: SET_EDIT_JOB, payload: { isEditing: boolean } });
   };
 
   const addUserToLocalStorage = ({ user, token, userLocation }) => {
@@ -299,6 +296,10 @@ const AppProvider = ({ children }) => {
       // logoutUser();
     }
     clearAlert();
+  };
+
+  const setEditJob = (boolean, id) => {
+    dispatch({ type: SET_EDIT_JOB, payload: { isEditing: boolean, id } });
   };
 
   return (

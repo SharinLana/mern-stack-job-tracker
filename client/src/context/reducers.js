@@ -61,10 +61,6 @@ const reducer = (state, action) => {
     return { ...state, isProfileInputsActive: false };
   }
 
-  if (action.type === SET_EDIT_JOB) {
-    return { ...state, isEditing: action.payload.isEditing };
-  }
-
   if (action.type === REGISTER_USER_BEGIN) {
     return { ...state, isLoading: true };
   }
@@ -212,6 +208,39 @@ const reducer = (state, action) => {
       jobs: action.payload.jobs,
       totalJobs: action.payload.totalJobs,
       numOfPages: action.payload.numOfPages,
+    };
+  }
+
+  if (action.type === SET_EDIT_JOB) {
+    const job = state.jobs.find((job) => job._id === action.payload.id);
+    const {
+      _id,
+      company,
+      interviewScheduledAt,
+      jobLocation,
+      jobStatus,
+      jobType,
+      position,
+      recruiter,
+      recruiterEmail,
+      salaryMax,
+      salaryMin,
+    } = job;
+
+    return {
+      ...state,
+      isEditing: action.payload.isEditing,
+      editJobId: _id,
+      company,
+      interviewScheduledAt,
+      jobLocation,
+      jobStatus,
+      jobType,
+      position,
+      recruiter,
+      recruiterEmail,
+      salaryMax,
+      salaryMin,
     };
   }
 

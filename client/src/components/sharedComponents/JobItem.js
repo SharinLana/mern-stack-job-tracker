@@ -12,6 +12,7 @@ import JobInfo from "./JobInfo";
 import { useAppContext } from "../../context/appContext";
 
 const JobItem = ({
+  _id,
   company,
   position,
   jobLocation,
@@ -64,7 +65,7 @@ const JobItem = ({
         <Link
           to="/add-job"
           className="btn edit-btn"
-          onClick={() => setEditJob(true)}
+          onClick={() => setEditJob(true, _id)}
         >
           Edit
         </Link>
