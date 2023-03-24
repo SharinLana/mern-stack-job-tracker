@@ -322,7 +322,7 @@ const AppProvider = ({ children }) => {
         jobStatus,
       } = state;
 
-      await authFetch.patch(`/${state.editJobId}`, {
+      await authFetch.patch(`/jobs/${state.editJobId}`, {
         company,
         position,
         jobLocation,
@@ -339,7 +339,10 @@ const AppProvider = ({ children }) => {
       dispatch({ type: CLEAR_VALUES });
     } catch (error) {
       if (error.response.status !== 401) {
-        dispatch({ type: EDIT_JOB_ERROR });
+        dispatch({
+          type: EDIT_JOB_ERROR,
+          payload: { message: error.response.data.message },
+        });
       }
     }
 
