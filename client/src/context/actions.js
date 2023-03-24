@@ -35,4 +35,6 @@ export const EDIT_JOB_BEGIN = "EDIT_JOB_BEGIN";
 export const EDIT_JOB_SUCCESS = "EDIT_JOB_SUCCESS";
 export const EDIT_JOB_ERROR = "EDIT_JOB_ERROR";
 
-export const DELETE_JOB = "DELETE_JOB"
+export const DELETE_JOB = "DELETE_JOB";
+
+export const CHANGE_PAGE = "CHANGE_PAGE";

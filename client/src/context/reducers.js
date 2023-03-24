@@ -29,6 +29,7 @@ import {
   EDIT_JOB_SUCCESS,
   EDIT_JOB_ERROR,
   DELETE_JOB,
+  CHANGE_PAGE,
 } from "./actions";
 
 const reducer = (state, action) => {
