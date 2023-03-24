@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Wrapper from "../assets/wrappers/JobsContainer";
 import { useAppContext } from "../context/appContext";
+import PageBtnsContainer from "./PageBtnsContainer";
 import JobItem from "./sharedComponents/JobItem";
 
 const JobsContainer = () => {
@@ -35,6 +36,7 @@ const JobsContainer = () => {
         })}
       </div>
       {/* Pages later*/}
+      <PageBtnsContainer />
     </Wrapper>
   );
 };
