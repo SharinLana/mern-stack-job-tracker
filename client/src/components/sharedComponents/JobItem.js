@@ -24,8 +24,9 @@ const JobItem = ({
   jobStatus,
   interviewScheduledAt,
   createdAt,
+  isLoading,
 }) => {
-  const { setEditJob } = useAppContext();
+  const { setEditJob, deleteJob } = useAppContext();
   let dateOfCreation = moment(createdAt).format("MMM Do, YYYY");
   let interviewDate = moment(interviewScheduledAt).format("MMM Do, YYYY");
 
@@ -65,11 +66,17 @@ const JobItem = ({
         <Link
           to="/add-job"
           className="btn edit-btn"
+          disabled={isLoading}
           onClick={() => setEditJob(true, _id)}
         >
           Edit
         </Link>
-        <button type="button" className="btn delete-btn">
+        <button
+          type="button"
+          className="btn delete-btn"
+          disabled={isLoading}
+          onClick={() => deleteJob(_id)}
+        >
           Delete
         </button>
       </footer>
