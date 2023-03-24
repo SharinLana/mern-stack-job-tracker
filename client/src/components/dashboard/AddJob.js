@@ -34,7 +34,6 @@ const AddJob = () => {
     clearInputValues,
     editJob,
   } = useAppContext();
-  console.log(isEditing);
 
   const getInputValueHandler = (e) => {
     getInputValues({ name: e.target.name, value: e.target.value });

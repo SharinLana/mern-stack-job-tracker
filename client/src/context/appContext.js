@@ -29,6 +29,7 @@ import {
   EDIT_JOB_BEGIN,
   EDIT_JOB_SUCCESS,
   EDIT_JOB_ERROR,
+  DELETE_JOB,
 } from "./actions";
 
 const token = localStorage.getItem("token");
