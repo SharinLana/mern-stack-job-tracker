@@ -36,7 +36,7 @@ const PageBtnsContainer = () => {
           return (
             <button
               type="button"
-              className="pageBtn"
+              className={pageNumber === page ? "pageBtn active" : "pageBtn"}
               key={pageNumber}
               onClick={() => changePage(pageNumber)}
             >
