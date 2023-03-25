@@ -31,7 +31,9 @@ import {
   EDIT_JOB_ERROR,
   DELETE_JOB,
   CHANGE_PAGE,
-  GET_VISIBLE_PAGES,
+  GET_STATS_BEGIN,
+  GET_STATS_SUCCESS,
+  GET_STATS_ERROR,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -370,6 +372,8 @@ const AppProvider = ({ children }) => {
   const changePage = (page) => {
     dispatch({ type: CHANGE_PAGE, payload: { page } });
   };
+
+  
 
   return (
     <AppContext.Provider

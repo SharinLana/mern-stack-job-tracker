@@ -39,3 +39,7 @@ export const DELETE_JOB = "DELETE_JOB";
 
 export const CHANGE_PAGE = "CHANGE_PAGE";
 export const GET_VISIBLE_PAGES = "GET_VISIBLE_PAGES";
+
+export const GET_STATS_BEGIN = "GET_STATS_BEGIN";
+export const GET_STATS_SUCCESS = "GET_STATS_SUCCESS";
+export const GET_STATS_ERROR = "GET_STATS_ERROR";
