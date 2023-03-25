@@ -9,15 +9,17 @@ import {
   ResponsiveContainer,
 } from "recharts"; //https://recharts.org
 
-const BarChartComponent = () => {
+const BarChartComponent = ({ data }) => {
   return (
     <ResponsiveContainer width="90%" height={300}>
-      <BarChart margin={{ top: 50 }}>
+      <BarChart margin={{ top: 50 }} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis />
+        {/* "date" came from jobs-controller.js (after mapping the monthlyApplications,
+            we returned {date, count}. Here we use date as a dataKey */}
+        <XAxis dataKey="date" />
         <YAxis allowDecimals={false} />
         <Tooltip />
-        <Bar fill="#2cb1bc" barSize={75} />
+        <Bar fill="#2cb1bc" barSize={75} dataKey="count" />
       </BarChart>
     </ResponsiveContainer>
   );
