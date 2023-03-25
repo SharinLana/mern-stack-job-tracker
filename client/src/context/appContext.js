@@ -78,6 +78,9 @@ const initialState = {
   page: 1,
   numOfPages: 1,
   visiblePages: [],
+  // stats
+  stats: {},
+  monthlyApplications: []
 };
 
 const AppContext = React.createContext();
