@@ -30,7 +30,11 @@ const Wrapper = styled.div`
     padding: 8px;
   }
 
-  .pageBtn:hover, .active {
+  .pageBtn:hover {
+    background-color: #2e2e417f;
+  }
+
+  .active {
     background-color: #39b5e0;
   }
 
