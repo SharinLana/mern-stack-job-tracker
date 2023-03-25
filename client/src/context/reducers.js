@@ -326,6 +326,10 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === GET_STATS_BEGIN) {
+    return { ...state, isLoading: true, showAlert: false };
+  }
+
   throw new Error(`No such action: ${action.type}`);
 };
 

@@ -373,7 +373,19 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CHANGE_PAGE, payload: { page } });
   };
 
-  
+  const getStats = async () => {
+    dispatch({type: GET_STATS_BEGIN});
+
+    try {
+      const response = await authFetch("/jobs/stats");
+      console.log(response);
+
+    } catch(error) {
+      console.log(error.response.data.message);
+      // logoutUser();
+    }
+    clearAlert();
+  }
 
   return (
     <AppContext.Provider
@@ -395,6 +407,7 @@ const AppProvider = ({ children }) => {
         editJob,
         deleteJob,
         changePage,
+        getStats,
       }}
     >
       {children}
