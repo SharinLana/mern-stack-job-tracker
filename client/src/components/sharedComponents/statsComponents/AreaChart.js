@@ -9,19 +9,22 @@ import {
   Tooltip,
 } from "recharts";
 
-const AreaChartComponent = () => {
+const AreaChartComponent = ({ data }) => {
   return (
     <ResponsiveContainer width="90%" height={300}>
       <AreaChart
         margin={{
           top: 50,
         }}
+        data={data}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis />
+        {/* "date" came from jobs-controller.js (after mapping the monthlyApplications,
+            we returned {date, count}. Here we use date as a dataKey */}
+        <XAxis dataKey="date" />
         <YAxis allowDecimals={false} />
         <Tooltip />
-        <Area type="monotone" stroke="#2cb1bc" fill="#bef8fd" />
+        <Area type="monotone" stroke="#2cb1bc" fill="#bef8fd" dataKey="count" />
       </AreaChart>
     </ResponsiveContainer>
   );
