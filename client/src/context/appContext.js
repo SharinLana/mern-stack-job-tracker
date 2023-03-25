@@ -82,7 +82,7 @@ const initialState = {
   visiblePages: [],
   // stats
   stats: {},
-  monthlyApplications: []
+  monthlyApplications: [],
 };
 
 const AppContext = React.createContext();
@@ -374,18 +374,24 @@ const AppProvider = ({ children }) => {
   };
 
   const getStats = async () => {
-    dispatch({type: GET_STATS_BEGIN});
+    dispatch({ type: GET_STATS_BEGIN });
 
     try {
       const response = await authFetch("/jobs/stats");
-      console.log(response);
 
-    } catch(error) {
+      dispatch({
+        type: GET_STATS_SUCCESS,
+        payload: {
+          stats: response.data.defaultStats,
+          monthlyApplications: response.data.monthlyApplications,
+        },
+      });
+    } catch (error) {
       console.log(error.response.data.message);
       // logoutUser();
     }
     clearAlert();
-  }
+  };
 
   return (
     <AppContext.Provider

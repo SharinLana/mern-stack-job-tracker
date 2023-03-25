@@ -330,6 +330,15 @@ const reducer = (state, action) => {
     return { ...state, isLoading: true, showAlert: false };
   }
 
+  if (action.type === GET_STATS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      stats: action.payload.stats,
+      monthlyApplications: action.payload.monthlyApplications,
+    };
+  }
+
   throw new Error(`No such action: ${action.type}`);
 };
 
