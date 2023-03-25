@@ -5,29 +5,26 @@ import { useAppContext } from "../../../context/appContext";
 import StatsItem from "../../sharedComponents/statsComponents/StatsItem";
 
 const StatsContainer = () => {
-  const { showLargeSidebar } = useAppContext();
+  const { showLargeSidebar, stats } = useAppContext();
 
   const defaultStats = [
     {
       title: "pending application",
-      //   count: stats.pending || 0,
-      count: 120,
+      count: stats.pending || 0,
       icon: <FaSuitcaseRolling />,
       color: "#FBB454",
       bcg: "#fcefc7",
     },
     {
       title: "interviews scheduled",
-      //   count: stats.interview || 0,
-      count: 0,
+      count: stats.interview || 0,
       icon: <FaCalendarCheck />,
       color: "#39B5E0",
       bcg: "#C0DEFF",
     },
     {
       title: "jobs declined",
-      //   count: stats.declined || 0,
-      count: 0,
+      count: stats.declined || 0,
       icon: <FaBug />,
       color: "#A31ACB",
       bcg: "#a21acb65",
