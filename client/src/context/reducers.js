@@ -32,7 +32,6 @@ import {
   CHANGE_PAGE,
   GET_STATS_BEGIN,
   GET_STATS_SUCCESS,
-  GET_STATS_ERROR,
 } from "./actions";
 
 const reducer = (state, action) => {
