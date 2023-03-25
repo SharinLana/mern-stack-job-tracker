@@ -6,12 +6,15 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
 
+  .header-container {
+    margin-left: ${(props) => props.move};
+    transition: 0.3s ease-in-out all;
+  }
+
   h4 {
     margin-top: 50px;
     font-size: 22px;
     color: #2e2e41d2;
-    margin-left: ${(props) => props.move};
-    transition: 0.3s ease-in-out all;
   }
 
   .jobs-container {
@@ -132,7 +135,7 @@ const Wrapper = styled.div`
   }
 
   .delete-btn {
-    background-color: #716F81;
+    background-color: #716f81;
   }
 
   .edit-btn:hover {

@@ -26,16 +26,18 @@ const JobsContainer = () => {
 
   return (
     <Wrapper move={showLargeSidebar ? "250px" : "0px"}>
-      <h4>
-        {totalJobs} job{jobs.length > 1 && "s"} found
-      </h4>
+      <div className="header-container">
+        <h4>
+          {totalJobs} job{jobs.length > 1 && "s"} found
+        </h4>
+        {numOfPages > 1 && <PageBtnsContainer />}
+      </div>
 
       <div className="jobs-container">
         {jobs.map((job) => {
           return <JobItem key={job._id} {...job} />;
         })}
       </div>
-      {/* Pages later*/}
       {numOfPages > 1 && <PageBtnsContainer />}
     </Wrapper>
   );
