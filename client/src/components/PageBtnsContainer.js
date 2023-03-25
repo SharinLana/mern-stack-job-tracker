@@ -1,13 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from "react-icons/hi";
 import { useAppContext } from "../context/appContext";
 import Wrapper from "../assets/wrappers/PageBtnsContainer";
 
 const PageBtnsContainer = () => {
-  const { numOfPages, page, changePage } = useAppContext();
-  const pages = Array.from({ length: numOfPages }, (_, index) => {
-    return index + 1;
-  });
+  const { numOfPages, page, changePage, visiblePages } = useAppContext();
 
   const prevPage = () => {
     let newPage = page - 1;
@@ -25,14 +22,20 @@ const PageBtnsContainer = () => {
     changePage(newPage);
   };
 
+  useEffect(() => {
+    changePage(page);
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <Wrapper>
       <button type="button" onClick={prevPage} className="handle-btn">
         <HiChevronDoubleLeft />
         Prev
       </button>
-      <div>
-        {pages.map((pageNumber) => {
+      <div className="page-btns-container">
+        {page > 1 && <p className="dots">...</p>}
+        {visiblePages.map((pageNumber) => {
           return (
             <button
               type="button"
@@ -44,6 +47,7 @@ const PageBtnsContainer = () => {
             </button>
           );
         })}
+        {visiblePages[2] < numOfPages && <p className="dots">...</p>}
       </div>
       <button type="button" onClick={nextPage} className="handle-btn">
         Next

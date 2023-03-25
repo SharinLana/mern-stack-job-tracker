@@ -20,13 +20,25 @@ const Wrapper = styled.div`
     font-size: 16px;
   }
 
+  .page-btns-container {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  .dots {
+    margin: 0px 4px;
+    font-size: 24px;
+  }
+
   .pageBtn {
     background-color: #2e2e41b9;
     border: none;
     font-size: 16px;
     border-radius: 3px;
     margin: 3px;
-    width: 40px;
+    width: 30px;
     padding: 8px;
   }
 

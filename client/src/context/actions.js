@@ -38,3 +38,4 @@ export const EDIT_JOB_ERROR = "EDIT_JOB_ERROR";
 export const DELETE_JOB = "DELETE_JOB";
 
 export const CHANGE_PAGE = "CHANGE_PAGE";
+export const GET_VISIBLE_PAGES = "GET_VISIBLE_PAGES";

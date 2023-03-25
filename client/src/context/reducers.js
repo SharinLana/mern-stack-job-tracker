@@ -30,6 +30,7 @@ import {
   EDIT_JOB_ERROR,
   DELETE_JOB,
   CHANGE_PAGE,
+  GET_VISIBLE_PAGES,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -283,7 +284,44 @@ const reducer = (state, action) => {
   }
 
   if (action.type === CHANGE_PAGE) {
-    return { ...state, page: action.payload.page };
+    let newVisiblePages = [];
+    let showMax = 3;
+    let endPage;
+    let startPage;
+
+    if (state.numOfPages <= showMax) {
+      startPage = 1;
+      endPage = state.numOfPages;
+    } else {
+      startPage = action.payload.page;
+
+      if (
+        startPage !== state.numOfPages &&
+        startPage + 1 !== state.numOfPages
+      ) {
+        endPage = action.payload.page + showMax - 1;
+      } else {
+        endPage = state.numOfPages;
+      }
+
+      if (startPage === state.numOfPages - 1) {
+        startPage = startPage - 1;
+      }
+
+      if (startPage === state.numOfPages) {
+        startPage = startPage - 2;
+      }
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      newVisiblePages.push(i);
+    }
+
+    return {
+      ...state,
+      page: action.payload.page,
+      visiblePages: newVisiblePages,
+    };
   }
 
   throw new Error(`No such action: ${action.type}`);

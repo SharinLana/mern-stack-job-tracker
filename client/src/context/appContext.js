@@ -31,6 +31,7 @@ import {
   EDIT_JOB_ERROR,
   DELETE_JOB,
   CHANGE_PAGE,
+  GET_VISIBLE_PAGES,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -76,6 +77,7 @@ const initialState = {
   totalJobs: 0,
   page: 1,
   numOfPages: 1,
+  visiblePages: [],
 };
 
 const AppContext = React.createContext();
