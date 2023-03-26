@@ -159,7 +159,7 @@ const Register = () => {
               loginUser({ email: "test@gmail.com", password: "testSecret" })
             }
           >
-            {isLoading ? "Submitting..." : "View Demo"}
+            View Demo
           </button>
 
           <p>
