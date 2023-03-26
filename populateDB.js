@@ -14,7 +14,7 @@ const populate = async () => {
       .then(() => console.log("MONGODB CONNECTED!"))
       .catch((err) => console.log(err));
 
-    await JobModel.deleteMany();
+    // await JobModel.deleteMany();
 
     const jsonJobs = JSON.parse(
       await readFile(new URL("./jobs-data.json", import.meta.url))
