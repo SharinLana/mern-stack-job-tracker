@@ -14,16 +14,17 @@ const Wrapper = styled.div`
   }
 
   .chart-btn {
-    width: 150px;
+    width: 180px;
     border-radius: 6px;
-    background-color: #716F81;
+    background-color: transparent;
     font-size: 18px;
     font-weight: 600;
     padding: 8px 20px;
+    color: #39B5E0;
   }
 
   .chart-btn:hover {
-    background-color: white;
+    /* background-color: white; */
     color: #eb55beb0;
   }
 `;

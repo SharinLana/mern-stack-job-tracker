@@ -24,7 +24,7 @@ const AreaChartComponent = ({ data }) => {
         <XAxis dataKey="date" />
         <YAxis allowDecimals={false} />
         <Tooltip />
-        <Area type="monotone" stroke="#2cb1bc" fill="#bef8fd" dataKey="count" />
+        <Area type="monotone" stroke="#39B5E0" fill="#C0DEFF" dataKey="count" />
       </AreaChart>
     </ResponsiveContainer>
   );
