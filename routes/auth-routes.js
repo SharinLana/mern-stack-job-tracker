@@ -6,6 +6,7 @@ import {
   login,
   updateUser,
 } from "../controllers/auth-controllers.js";
+import testUser from "../middleware/testUser.js";
 
 const router = express.Router();
 const apiLimiter = rateLimiter({
@@ -17,6 +18,6 @@ const apiLimiter = rateLimiter({
 
 router.route("/register").post(apiLimiter, register);
 router.route("/login").post(apiLimiter, login);
-router.route("/updateUser").patch(authVerification, updateUser);
+router.route("/updateUser").patch(authVerification, testUser, updateUser);
 
 export default router;
