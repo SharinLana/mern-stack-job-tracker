@@ -14,10 +14,11 @@ const auth = async (req, res, next) => {
     // TEST USER!
     const testUser = payload.userId === "testUserId";
     // TEST USER!
-    req.user = { userId: payload.userId, name: payload.name, testUser };
+    req.user = { userId: payload.userId, testUser };
     next();
   } catch (err) {
     console.log(err);
+    throw new UnauthorizedError('Authentication Invalid');
   }
 };
 
