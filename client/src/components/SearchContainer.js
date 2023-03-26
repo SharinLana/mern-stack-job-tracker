@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { useAppContext } from "../context/appContext";
 import Wrapper from "../assets/wrappers/SearchContainer";
 import FormInput from "./sharedComponents/FormInput";
@@ -7,22 +7,39 @@ import SelectField from "./sharedComponents/SelectField";
 import Logo from "./Logo";
 
 const SearchContainer = () => {
+  const [localSearch, setLocalSearch] = useState("");
   const {
     showLargeSidebar,
     jobTypeOptions,
     statusOptions,
-    search,
+    // search,
     searchJobStatus,
     searchJobType,
     sort,
     sortOptions,
     getInputValues,
-    clearSearchingFilters
+    clearSearchingFilters,
   } = useAppContext();
 
   const getInputValueHandler = (e) => {
     getInputValues({ name: e.target.name, value: e.target.value });
   };
+
+  const debounce = () => {
+    let timeoutID;
+    return (e) => {
+      setLocalSearch(e.target.value);
+      clearTimeout(timeoutID);
+      timeoutID = setTimeout(() => {
+        getInputValues({ name: e.target.name, value: e.target.value });
+      }, 1000);
+    };
+  };
+
+  const optimizedDebounce = useMemo(() => {
+    return debounce();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <Wrapper move={showLargeSidebar ? "250px" : "0px"}>
@@ -36,8 +53,8 @@ const SearchContainer = () => {
             <FormInput
               type="text"
               name="search"
-              onGetValue={getInputValueHandler}
-              value={search}
+              onGetValue={optimizedDebounce}
+              value={localSearch}
               inputClass="input"
             />
           </div>
@@ -78,7 +95,11 @@ const SearchContainer = () => {
             />
           </div>
           <div className="btn-container">
-            <button type="button" className="search-btn clear" onClick={clearSearchingFilters}>
+            <button
+              type="button"
+              className="search-btn clear"
+              onClick={clearSearchingFilters}
+            >
               Clear
             </button>
           </div>
