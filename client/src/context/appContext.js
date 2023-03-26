@@ -393,7 +393,9 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-
+  const clearSearchingFilters = () => {
+    dispatch({ type: CLEAR_SEARCHING_FILTERS });
+  };
 
   return (
     <AppContext.Provider
@@ -416,6 +418,7 @@ const AppProvider = ({ children }) => {
         deleteJob,
         changePage,
         getStats,
+        clearSearchingFilters
       }}
     >
       {children}

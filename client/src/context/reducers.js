@@ -339,6 +339,16 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === CLEAR_SEARCHING_FILTERS) {
+    return {
+      ...state,
+      search: "",
+      searchJobStatus: "all",
+      searchJobType: "all",
+      sort: "latest",
+    };
+  }
+
   throw new Error(`No such action: ${action.type}`);
 };
 
