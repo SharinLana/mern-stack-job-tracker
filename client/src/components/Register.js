@@ -151,7 +151,14 @@ const Register = () => {
           <button type="submit" className="submit-btn" disabled={isLoading}>
             {isLoading ? "Submitting..." : "Submit"}
           </button>
-          <button type="submit" className="submit-btn" disabled={isLoading}>
+          <button
+            type="submit"
+            className="submit-btn"
+            disabled={isLoading}
+            onClick={() =>
+              loginUser({ email: "susan@gmail.com", password: "susanSecret" })
+            }
+          >
             {isLoading ? "Submitting..." : "View Demo"}
           </button>
 
