@@ -17,6 +17,7 @@ const SearchContainer = () => {
     sort,
     sortOptions,
     getInputValues,
+    clearSearchingFilters
   } = useAppContext();
 
   const getInputValueHandler = (e) => {
@@ -77,7 +78,7 @@ const SearchContainer = () => {
             />
           </div>
           <div className="btn-container">
-            <button type="button" className="search-btn clear">
+            <button type="button" className="search-btn clear" onClick={clearSearchingFilters}>
               Clear
             </button>
           </div>
