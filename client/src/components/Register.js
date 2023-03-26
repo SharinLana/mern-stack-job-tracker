@@ -151,6 +151,9 @@ const Register = () => {
           <button type="submit" className="submit-btn" disabled={isLoading}>
             {isLoading ? "Submitting..." : "Submit"}
           </button>
+          <button type="submit" className="submit-btn" disabled={isLoading}>
+            {isLoading ? "Submitting..." : "View Demo"}
+          </button>
 
           <p>
             <span className="asterisk">*</span> Required fields
