@@ -9,7 +9,6 @@ const JobsContainer = () => {
     showLargeSidebar,
     getAllJobs,
     jobs,
-    isLoading,
     numOfPages,
     page,
     totalJobs,

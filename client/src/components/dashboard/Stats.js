@@ -4,7 +4,7 @@ import ChartsContainer from "../sharedComponents/statsComponents/ChartsContainer
 import { useAppContext } from "../../context/appContext";
 
 const Stats = () => {
-  const { getStats, isLoading, monthlyApplications } = useAppContext();
+  const { getStats, monthlyApplications } = useAppContext();
 
   useEffect(() => {
     getStats();
