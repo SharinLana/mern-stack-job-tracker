@@ -33,6 +33,7 @@ import {
   CHANGE_PAGE,
   GET_STATS_BEGIN,
   GET_STATS_SUCCESS,
+  CLEAR_SEARCHING_FILTERS,
 } from "./actions";
 
 const token = localStorage.getItem("token");
@@ -391,6 +392,8 @@ const AppProvider = ({ children }) => {
     }
     clearAlert();
   };
+
+
 
   return (
     <AppContext.Provider
