@@ -1,6 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import UserModel from "../models/userModel.js";
 import { BadRequestError, UnauthorizedError } from "../errors/index.js";
+import attachCookie from "../utils/attachCookies.js";
 
 const register = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
@@ -19,6 +20,7 @@ const register = async (req, res, next) => {
   const user = await UserModel.create(req.body);
 
   const token = user.createJWT();
+  attachCookie({res, token});
 
   res.status(StatusCodes.CREATED).json({
     status: "success",
@@ -53,7 +55,7 @@ const login = async (req, res, next) => {
   const token = user.createJWT();
   user.password = undefined;
 
-  
+  attachCookie({res, token});
 
   res.status(StatusCodes.OK).json({
     status: "success",
@@ -82,6 +84,7 @@ const updateUser = async (req, res, next) => {
   await user.save();
 
   const token = user.createJWT();
+  attachCookie({res, token});
 
   res.status(StatusCodes.OK).json({
     status: "success",
