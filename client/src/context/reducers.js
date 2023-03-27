@@ -222,6 +222,7 @@ const reducer = (state, action) => {
 
   if (action.type === SET_EDIT_JOB) {
     const job = state.jobs.find((job) => job._id === action.payload.id);
+
     const {
       _id,
       company,
@@ -258,14 +259,24 @@ const reducer = (state, action) => {
   }
 
   if (action.type === EDIT_JOB_BEGIN) {
-    return { ...state, isLoading: true };
+    if (state.jobStatus !== "interview") {
+      state.interviewScheduledAt = "";
+    }
+    return {
+      ...state,
+      isLoading: true,
+      isEditing: true,
+      interviewScheduledAt: state.interviewScheduledAt
+    };
   }
 
   if (action.type === EDIT_JOB_SUCCESS) {
     return {
       ...state,
       isLoading: false,
+      isEditing: false,
       showAlert: true,
+      interviewScheduledAt: state.interviewScheduledAt,
       alertType: "success",
       alertText: "Job successfully edited!",
     };
@@ -275,6 +286,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: false,
+      // isEditing: false,
       showAlert: true,
       alertType: "danger",
       alertText: action.payload.message,

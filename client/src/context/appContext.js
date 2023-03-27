@@ -347,6 +347,7 @@ const AppProvider = ({ children }) => {
       dispatch({ type: EDIT_JOB_SUCCESS });
       dispatch({ type: CLEAR_VALUES });
     } catch (error) {
+      console.log(error);
       if (error.response.status !== 401) {
         dispatch({
           type: EDIT_JOB_ERROR,
@@ -418,7 +419,7 @@ const AppProvider = ({ children }) => {
         deleteJob,
         changePage,
         getStats,
-        clearSearchingFilters
+        clearSearchingFilters,
       }}
     >
       {children}

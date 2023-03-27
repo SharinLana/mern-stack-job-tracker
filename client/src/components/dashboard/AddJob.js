@@ -15,7 +15,6 @@ const AddJob = () => {
     showAlert,
     isEditing,
     isLoading,
-    setEditJob,
     getInputValues,
     displayAlert,
     company,
@@ -44,26 +43,36 @@ const AddJob = () => {
       navigate("/all-jobs");
       clearInputValues();
     }, 1800);
-  }
+  };
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-    if (!company || !position) {
+    if (
+      !company ||
+      !position ||
+      (jobStatus === "interview" && !interviewScheduledAt)
+    ) {
       displayAlert();
       return;
     }
 
     if (isEditing) {
+      if (
+        !company ||
+        !position ||
+        (jobStatus === "interview" && !interviewScheduledAt)
+      ) {
+        displayAlert();
+        return;
+      }
       editJob();
-      navigateToAllJobs()
+      navigateToAllJobs();
       return;
     }
 
     addJob();
-    setEditJob(false);
-
-    navigateToAllJobs()
+    navigateToAllJobs();
   };
 
   return (
