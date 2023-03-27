@@ -63,9 +63,13 @@ const getJobs = async (req, res, next) => {
 };
 
 const addJob = async (req, res, next) => {
-  const { position, company } = req.body;
+  const { position, company, jobStatus, interviewScheduledAt } = req.body;
   if (!position || !company) {
     throw new BadRequestError("Please provide position and company!");
+  }
+
+  if (jobStatus === "interview" && !interviewScheduledAt) {
+    throw new BadRequestError("Please provide the interview date and time!");
   }
 
   // Adding the user to the req.body
@@ -80,9 +84,14 @@ const addJob = async (req, res, next) => {
 };
 
 const editJob = async (req, res, next) => {
-  const { company, position } = req.body;
+  const { company, position, jobStatus, interviewScheduledAt } = req.body;
+
   if (!company || !position) {
     throw new BadRequestError("Please provide position and company!");
+  }
+
+  if (jobStatus === "interview" && !interviewScheduledAt) {
+    throw new BadRequestError("Please provide the interview date and time!");
   }
 
   const job = await JobModel.findOne({ _id: req.params.id });
