@@ -41,6 +41,11 @@ const SearchContainer = () => {
     // eslint-disable-next-line
   }, []);
 
+  const clearFilters = () => {
+    clearSearchingFilters();
+    setLocalSearch("");
+  };
+
   return (
     <Wrapper move={showLargeSidebar ? "250px" : "0px"}>
       <form className="search-form">
@@ -98,7 +103,7 @@ const SearchContainer = () => {
             <button
               type="button"
               className="search-btn clear"
-              onClick={clearSearchingFilters}
+              onClick={clearFilters}
             >
               Clear
             </button>
