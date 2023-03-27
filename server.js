@@ -17,6 +17,8 @@ import helmet from "helmet";
 import xss from "xss-clean";
 import mongoSanitize from "express-mongo-sanitize";
 
+import cookieParser from "cookie-parser";
+
 // Parsers
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -48,6 +50,8 @@ app.use(xss());
 app.set("trust proxy", 1); // for rateLimiter, to enable it when behind the reverse proxy (Heroku, Bluemix, etc)
 // The rateLimiter is used in the jobRoutes.js
 app.use(mongoSanitize());
+
+app.use(cookieParser());
 
 // Route middleware
 app.use("/api/v1/auth", authRoutes);
