@@ -237,16 +237,9 @@ const reducer = (state, action) => {
       salaryMin,
     } = job;
 
-    const normalizedDate = moment(interviewScheduledAt).format(
-      "yyyy-MM-DDThh:mm:ss.SSS"
-    );
-
-    return {
-      ...state,
-      isEditing: action.payload.isEditing,
-      editJobId: _id,
+    let toBeEdited = {
+      _id,
       company,
-      interviewScheduledAt: normalizedDate,
       jobLocation,
       jobStatus,
       jobType,
@@ -256,17 +249,34 @@ const reducer = (state, action) => {
       salaryMax,
       salaryMin,
     };
+
+    if (job.interviewScheduledAt === null) {
+      return {
+        ...state,
+        isEditing: action.payload.isEditing,
+        editJobId: _id,
+        ...toBeEdited,
+      };
+    } else {
+      const normalizedDate = moment(interviewScheduledAt).format(
+        "yyyy-MM-DDThh:mm:ss.SSS"
+      );
+
+      return {
+        ...state,
+        isEditing: action.payload.isEditing,
+        editJobId: _id,
+        ...toBeEdited,
+        interviewScheduledAt: normalizedDate,
+      };
+    }
   }
 
   if (action.type === EDIT_JOB_BEGIN) {
-    if (state.jobStatus !== "interview") {
-      state.interviewScheduledAt = "";
-    }
     return {
       ...state,
       isLoading: true,
       isEditing: true,
-      interviewScheduledAt: state.interviewScheduledAt
     };
   }
 
@@ -276,7 +286,6 @@ const reducer = (state, action) => {
       isLoading: false,
       isEditing: false,
       showAlert: true,
-      interviewScheduledAt: state.interviewScheduledAt,
       alertType: "success",
       alertText: "Job successfully edited!",
     };
@@ -286,7 +295,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: false,
-      // isEditing: false,
+      isEditing: false,
       showAlert: true,
       alertType: "danger",
       alertText: action.payload.message,
