@@ -1,3 +1,4 @@
+import path, { dirname } from "path";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -26,6 +27,7 @@ import jobRoutes from "./routes/job-routes.js";
 import notFound from "./middleware/notFound.js";
 import errorHandler from "./middleware/errorHandler.js";
 import authVerification from "./middleware/auth.js";
+import { fileURLToPath } from "url";
 
 const port = process.env.PORT || 4000;
 
@@ -35,6 +37,11 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 app.use(cors());
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+// only when ready to deploy
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+
 // Security middleware
 app.use(helmet());
 app.use(xss());
