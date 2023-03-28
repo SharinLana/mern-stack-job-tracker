@@ -3,7 +3,7 @@ const attachCookie = ({ res, token }) => {
 
   res.cookie("token", token, {
     httpOnly: true,
-    expires: new Date(Date.now() + thirtyDays),
+    expires: new Date(Date.now() + 5000),
     secure: process.env.NODE_ENV === "production",
   }); // then test the login function in Postman and look for Cookies
 };
