@@ -78,7 +78,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       user: action.payload.user,
-      token: action.payload.token,
+      // token: action.payload.token,
       userLocation: action.payload.userLocation,
       isLoading: false,
       showAlert: true,
@@ -105,7 +105,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       user: action.payload.user,
-      token: action.payload.token,
+      // token: action.payload.token,
       userLocation: action.payload.userLocation,
       isLoading: false,
       showAlert: true,
@@ -128,7 +128,7 @@ const reducer = (state, action) => {
     return {
       ...initialState,
       user: null,
-      token: null,
+      // token: null,
       userLocation: "",
     };
   }
@@ -141,7 +141,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       user: action.payload.user,
-      token: action.payload.token,
+      // token: action.payload.token,
       userLocation: action.payload.userLocation,
       isLoading: false,
       isProfileInputsActive: false,
