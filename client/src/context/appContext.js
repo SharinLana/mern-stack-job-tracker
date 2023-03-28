@@ -169,7 +169,7 @@ const AppProvider = ({ children }) => {
         payload: { user, userLocation },
       });
 
-      addUserToLocalStorage({ user, token, userLocation });
+      // addUserToLocalStorage({ user, token, userLocation });
     } catch (error) {
       console.log(error.response);
       dispatch({
@@ -193,7 +193,7 @@ const AppProvider = ({ children }) => {
         payload: { user, userLocation },
       });
 
-      addUserToLocalStorage({ user, token, userLocation });
+      // addUserToLocalStorage({ user, token, userLocation });
     } catch (error) {
       console.log(error.response);
       dispatch({
@@ -207,7 +207,7 @@ const AppProvider = ({ children }) => {
 
   const logoutUser = () => {
     dispatch({ type: LOGOUT_USER });
-    removeUserFromLocalStorage();
+    // removeUserFromLocalStorage();
   };
 
   const updateUser = async (currentUser) => {
@@ -221,7 +221,7 @@ const AppProvider = ({ children }) => {
         type: UPDATE_USER_SUCCESS,
         payload: { user, userLocation },
       });
-      addUserToLocalStorage({ user, token, userLocation });
+      // addUserToLocalStorage({ user, token, userLocation });
     } catch (error) {
       console.log(error.response);
       if (error.response.status !== 401) {
