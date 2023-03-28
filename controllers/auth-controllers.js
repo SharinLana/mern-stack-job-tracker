@@ -24,7 +24,7 @@ const register = async (req, res, next) => {
 
   res.status(StatusCodes.CREATED).json({
     status: "success",
-    token,
+    // token,
     user: {
       firstName: user.firstName,
       lastName: user.lastName,
@@ -59,7 +59,7 @@ const login = async (req, res, next) => {
 
   res.status(StatusCodes.OK).json({
     status: "success",
-    token,
+    // token,
     user,
     userLocation: user.userLocation,
   });
@@ -88,7 +88,7 @@ const updateUser = async (req, res, next) => {
 
   res.status(StatusCodes.OK).json({
     status: "success",
-    token,
+    // token,
     user,
     userLocation: user.userLocation,
   });
