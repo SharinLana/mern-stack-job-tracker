@@ -5,6 +5,7 @@ import {
   register,
   login,
   updateUser,
+  getCurrentUser,
 } from "../controllers/auth-controllers.js";
 import testUser from "../middleware/testUser.js";
 
@@ -19,5 +20,6 @@ const apiLimiter = rateLimiter({
 router.route("/register").post(apiLimiter, register);
 router.route("/login").post(apiLimiter, login);
 router.route("/updateUser").patch(authVerification, testUser, updateUser);
+router.route("/getCurrentUser").get(authVerification, getCurrentUser);
 
 export default router;
