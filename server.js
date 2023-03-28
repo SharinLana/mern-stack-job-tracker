@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express from "express";
+import session from "express-session";
 const app = express();
 
 import mongoose from "mongoose";
@@ -24,6 +25,30 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+
+app.set("trust proxy", 1); //! for rateLimiter and COOKIES, to enable it when behind the reverse proxy (Heroku, Bluemix, etc)
+// The rateLimiter is used in the jobRoutes.js
+
+app.use(
+  session({
+    resave: false,
+    saveUninitialized: false,
+    secret: process.env.JWT_SECRET,
+    cookie: {
+      maxAge: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
+      sameSite: "none",
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+    },
+  })
+);
+
 // Importing routes
 import authRoutes from "./routes/auth-routes.js";
 import jobRoutes from "./routes/job-routes.js";
@@ -39,8 +64,6 @@ if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
 
-app.use(cors());
-
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // only when ready to deploy
 app.use(express.static(path.resolve(__dirname, "./client/build")));
@@ -48,8 +71,6 @@ app.use(express.static(path.resolve(__dirname, "./client/build")));
 // Security middleware
 app.use(helmet());
 app.use(xss());
-app.set("trust proxy", 1); // for rateLimiter, to enable it when behind the reverse proxy (Heroku, Bluemix, etc)
-// The rateLimiter is used in the jobRoutes.js
 app.use(mongoSanitize());
 
 // Route middleware
