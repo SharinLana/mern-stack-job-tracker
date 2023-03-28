@@ -5,7 +5,6 @@ const attachCookie = ({ res, token }) => {
     httpOnly: true,
     expires: new Date(Date.now() + thirtyDays),
     secure: process.env.NODE_ENV === "production",
-    sameSite: 'none', // set to none for cross-request
   }); // then test the login function in Postman and look for Cookies
 };
 
