@@ -36,9 +36,9 @@ import {
   CLEAR_SEARCHING_FILTERS,
 } from "./actions";
 
-const token = localStorage.getItem("token");
-const user = localStorage.getItem("user");
-const userLocation = localStorage.getItem("location");
+// const token = localStorage.getItem("token");
+// const user = localStorage.getItem("user");
+// const userLocation = localStorage.getItem("location");
 
 const initialState = {
   showLargeSidebar: false,
@@ -51,9 +51,9 @@ const initialState = {
   alertType: "",
   alertText: "",
   // user
-  user: user ? JSON.parse(user) : null,
-  token: token,
-  userLocation: userLocation || "",
+  user: null,
+  // token: token,
+  userLocation: "",
   // add a job
   editJobId: "",
   company: "",
@@ -95,19 +95,18 @@ const AppProvider = ({ children }) => {
     {
       baseURL: "/api/v1",
     },
-    { withCredentials: true }
   );
 
-  //! axios - request
-  authFetch.interceptors.request.use(
-    (config) => {
-      config.headers["Authorization"] = `Bearer ${state.token}`;
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
+  //! axios - request (not required after token has been stored in cookies)
+  // authFetch.interceptors.request.use(
+  //   (config) => {
+  //     config.headers["Authorization"] = `Bearer ${state.token}`;
+  //     return config;
+  //   },
+  //   (error) => {
+  //     return Promise.reject(error);
+  //   }
+  // );
 
   //! axios - response
   authFetch.interceptors.response.use(
