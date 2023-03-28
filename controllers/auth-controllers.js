@@ -20,7 +20,7 @@ const register = async (req, res, next) => {
   const user = await UserModel.create(req.body);
 
   const token = user.createJWT();
-  attachCookie({res, token});
+  attachCookie({ res, token });
 
   res.status(StatusCodes.CREATED).json({
     status: "success",
@@ -55,7 +55,7 @@ const login = async (req, res, next) => {
   const token = user.createJWT();
   user.password = undefined;
 
-  attachCookie({res, token});
+  attachCookie({ res, token });
 
   res.status(StatusCodes.OK).json({
     status: "success",
@@ -84,7 +84,7 @@ const updateUser = async (req, res, next) => {
   await user.save();
 
   const token = user.createJWT();
-  attachCookie({res, token});
+  attachCookie({ res, token });
 
   res.status(StatusCodes.OK).json({
     status: "success",
@@ -94,4 +94,15 @@ const updateUser = async (req, res, next) => {
   });
 };
 
-export { register, login, updateUser };
+// Getting the current user to prevent losing his token on the page reload
+const getCurrentUser = async (req, res) => {
+  const user = await UserModel.findOne({ _id: req.user.userId });
+
+  res.status(StatusCodes.OK).json({
+    status: "success",
+    user,
+    userLocation: user.userLocation,
+  });
+};
+
+export { register, login, updateUser, getCurrentUser };
