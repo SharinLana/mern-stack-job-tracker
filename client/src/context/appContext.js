@@ -89,12 +89,14 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  axios.defaults.withCredentials = true;
 
   //! axios - global setup
-  const authFetch = axios.create({
-    baseURL: "/api/v1",
-  });
+  const authFetch = axios.create(
+    {
+      baseURL: "/api/v1",
+    },
+    { withCredentials: true }
+  );
 
   //! axios - request
   authFetch.interceptors.request.use(
