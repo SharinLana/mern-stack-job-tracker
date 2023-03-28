@@ -91,11 +91,9 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   //! axios - global setup
-  const authFetch = axios.create(
-    {
-      baseURL: "/api/v1",
-    },
-  );
+  const authFetch = axios.create({
+    baseURL: "/api/v1",
+  });
 
   //! axios - request (not required after token has been stored in cookies)
   // authFetch.interceptors.request.use(
@@ -164,11 +162,11 @@ const AppProvider = ({ children }) => {
 
     try {
       const response = await authFetch.post("/auth/register", currentUser);
-      const { user, token, userLocation } = response.data;
+      const { user, userLocation } = response.data;
 
       dispatch({
         type: REGISTER_USER_SUCCESS,
-        payload: { user, token, userLocation },
+        payload: { user, userLocation },
       });
 
       addUserToLocalStorage({ user, token, userLocation });
@@ -188,11 +186,11 @@ const AppProvider = ({ children }) => {
 
     try {
       const response = await authFetch.post("/auth/login", currentUser);
-      const { user, token, userLocation } = response.data;
+      const { user, userLocation } = response.data;
 
       dispatch({
         type: LOGIN_USER_SUCCESS,
-        payload: { user, token, userLocation },
+        payload: { user, userLocation },
       });
 
       addUserToLocalStorage({ user, token, userLocation });
@@ -217,11 +215,11 @@ const AppProvider = ({ children }) => {
 
     try {
       const response = await authFetch.patch("/auth/updateUser", currentUser);
-      const { user, token, userLocation } = response.data;
+      const { user, userLocation } = response.data;
 
       dispatch({
         type: UPDATE_USER_SUCCESS,
-        payload: { user, token, userLocation },
+        payload: { user, userLocation },
       });
       addUserToLocalStorage({ user, token, userLocation });
     } catch (error) {
