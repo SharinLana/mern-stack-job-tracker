@@ -145,17 +145,17 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SAVE_PROFILE_CHANGES });
   };
 
-  const addUserToLocalStorage = ({ user, token, userLocation }) => {
-    localStorage.setItem("user", JSON.stringify(user));
-    localStorage.setItem("token", token);
-    localStorage.setItem("location", userLocation);
-  };
+  // const addUserToLocalStorage = ({ user, token, userLocation }) => {
+  //   localStorage.setItem("user", JSON.stringify(user));
+  //   localStorage.setItem("token", token);
+  //   localStorage.setItem("location", userLocation);
+  // };
 
-  const removeUserFromLocalStorage = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    localStorage.removeItem("location");
-  };
+  // const removeUserFromLocalStorage = () => {
+  //   localStorage.removeItem("user");
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("location");
+  // };
 
   //! USER
 
