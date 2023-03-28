@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express from "express";
-import session from "express-session";
 const app = express();
 
 import mongoose from "mongoose";
@@ -13,7 +12,7 @@ import "express-async-errors";
 import morgan from "morgan";
 
 // Secirity packages
-import cors from "cors";
+// import cors from "cors";
 import helmet from "helmet";
 import xss from "xss-clean";
 import mongoSanitize from "express-mongo-sanitize";
@@ -25,29 +24,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
-
 app.set("trust proxy", 1); //! for rateLimiter and COOKIES, to enable it when behind the reverse proxy (Heroku, Bluemix, etc)
 // The rateLimiter is used in the jobRoutes.js
-
-app.use(
-  session({
-    resave: false,
-    saveUninitialized: false,
-    secret: process.env.JWT_SECRET,
-    cookie: {
-      maxAge: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
-      sameSite: "none",
-      secure: process.env.NODE_ENV === "production",
-      httpOnly: true,
-    },
-  })
-);
 
 // Importing routes
 import authRoutes from "./routes/auth-routes.js";
