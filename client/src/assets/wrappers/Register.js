@@ -81,6 +81,22 @@ const Wrapper = styled.div`
     border: none;
   }
 
+  .demo-btn {
+    align-self: center;
+    width: 140px;
+    margin-top: 20px;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #39b5e0;
+  }
+
+  .demo-btn:hover {
+    background-color: white;
+    color: #39b5e0;
+    border: 1px solid #39b6e0ae;
+  }
+
   .toggle-par {
     font-size: 18px;
   }

@@ -153,7 +153,7 @@ const Register = () => {
           </button>
           <button
             type="submit"
-            className="submit-btn"
+            className="demo-btn"
             disabled={isLoading}
             onClick={() =>
               loginUser({ email: "test@gmail.com", password: "testSecret" })
