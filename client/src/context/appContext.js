@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 import axios from "axios";
 import reducer from "./reducers";
 
@@ -418,6 +418,11 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    getCurrentUser();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
@@ -440,7 +445,7 @@ const AppProvider = ({ children }) => {
         changePage,
         getStats,
         clearSearchingFilters,
-        getCurrentUser
+        getCurrentUser,
       }}
     >
       {children}
