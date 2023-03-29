@@ -54,6 +54,7 @@ const initialState = {
   alertText: "",
   // user
   user: null,
+  userLoading: true,
   // token: token,
   userLocation: "",
   // add a job
