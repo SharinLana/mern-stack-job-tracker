@@ -114,4 +114,4 @@ const logout = async (req, res) => {
   res.status(StatusCodes.OK).json({ message: "User logged out!" });
 };
 
-export { register, login, updateUser, getCurrentUser };
+export { register, login, updateUser, getCurrentUser, logout };

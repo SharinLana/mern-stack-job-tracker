@@ -6,6 +6,7 @@ import {
   login,
   updateUser,
   getCurrentUser,
+  logout
 } from "../controllers/auth-controllers.js";
 import testUser from "../middleware/testUser.js";
 
