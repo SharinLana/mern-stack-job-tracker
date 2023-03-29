@@ -34,6 +34,8 @@ import {
   GET_STATS_BEGIN,
   GET_STATS_SUCCESS,
   CLEAR_SEARCHING_FILTERS,
+  GET_CURRENT_USER_BEGIN,
+  GET_CURRENT_USER_SUCCESS
 } from "./actions";
 
 // const token = localStorage.getItem("token");
