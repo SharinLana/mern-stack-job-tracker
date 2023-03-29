@@ -56,7 +56,7 @@ const getJobs = async (req, res, next) => {
 
   res.status(StatusCodes.OK).json({
     status: "success",
-    totalJobs: jobs.length,
+    totalJobs,
     numOfPages,
     jobs,
   });
