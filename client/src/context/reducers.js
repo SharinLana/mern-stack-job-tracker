@@ -132,6 +132,7 @@ const reducer = (state, action) => {
       user: null,
       // token: null,
       userLocation: "",
+      userLoading: false,
     };
   }
 
