@@ -37,6 +37,7 @@ import {
   GET_CURRENT_USER_BEGIN,
   GET_CURRENT_USER_SUCCESS,
 } from "./actions";
+import auth from "../../../middleware/auth";
 
 // const token = localStorage.getItem("token");
 // const user = localStorage.getItem("user");
@@ -208,7 +209,8 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  const logoutUser = () => {
+  const logoutUser = async () => {
+    await authFetch("/auth/logout");
     dispatch({ type: LOGOUT_USER });
     // removeUserFromLocalStorage();
   };
