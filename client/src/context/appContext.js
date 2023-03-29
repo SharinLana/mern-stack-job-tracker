@@ -308,8 +308,8 @@ const AppProvider = ({ children }) => {
         payload: { jobs, totalJobs, numOfPages },
       });
     } catch (error) {
-      console.log(error.response.data);
-      // logoutUser();
+      // console.log(error.response.data);
+      logoutUser();
     }
     clearAlert();
   };
@@ -351,7 +351,6 @@ const AppProvider = ({ children }) => {
       dispatch({ type: EDIT_JOB_SUCCESS });
       dispatch({ type: CLEAR_VALUES });
     } catch (error) {
-      console.log(error);
       if (error.response.status !== 401) {
         dispatch({
           type: EDIT_JOB_ERROR,
@@ -369,8 +368,8 @@ const AppProvider = ({ children }) => {
       await authFetch.delete(`/jobs/${id}`);
       getAllJobs();
     } catch (error) {
-      console.log(error.response.data.message);
-      // logoutUser();
+      // console.log(error.response.data.message);
+      logoutUser();
     }
   };
 
@@ -392,8 +391,8 @@ const AppProvider = ({ children }) => {
         },
       });
     } catch (error) {
-      console.log(error.response.data.message);
-      // logoutUser();
+      // console.log(error.response.data.message);
+      logoutUser();
     }
     clearAlert();
   };
@@ -445,7 +444,7 @@ const AppProvider = ({ children }) => {
         deleteJob,
         changePage,
         getStats,
-        clearSearchingFilters
+        clearSearchingFilters,
       }}
     >
       {children}
