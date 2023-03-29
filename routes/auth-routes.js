@@ -6,7 +6,7 @@ import {
   login,
   updateUser,
   getCurrentUser,
-  logout
+  logout,
 } from "../controllers/auth-controllers.js";
 import testUser from "../middleware/testUser.js";
 
@@ -22,5 +22,6 @@ router.route("/register").post(apiLimiter, register);
 router.route("/login").post(apiLimiter, login);
 router.route("/updateUser").patch(authVerification, testUser, updateUser);
 router.route("/getCurrentUser").get(authVerification, getCurrentUser);
+router.route("/logout").get(logout);
 
 export default router;
