@@ -59,3 +59,18 @@ button {
   border: none;
   transition: 0.3s ease-in-out all;
 }
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  width: 6rem;
+  height: 6rem;
+  border: 5px solid #829ab1;
+  border-radius: 50%;
+  border-top-color: #2cb1bc;
+  animation: spinner 2s linear infinite;
+}
