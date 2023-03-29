@@ -445,8 +445,7 @@ const AppProvider = ({ children }) => {
         deleteJob,
         changePage,
         getStats,
-        clearSearchingFilters,
-        getCurrentUser,
+        clearSearchingFilters
       }}
     >
       {children}
