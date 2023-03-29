@@ -372,6 +372,19 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === GET_CURRENT_USER_BEGIN) {
+    return { ...state, userLoading: true, showAlert: false };
+  }
+
+  if (action.type === GET_CURRENT_USER_SUCCESS) {
+    return {
+      ...state,
+      userLoading: false,
+      user: action.payload.user,
+      userLocation: action.payload.userLocation,
+    };
+  }
+
   throw new Error(`No such action: ${action.type}`);
 };
 
