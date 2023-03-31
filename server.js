@@ -35,7 +35,7 @@ import errorHandler from "./middleware/errorHandler.js";
 import authVerification from "./middleware/auth.js";
 import { fileURLToPath } from "url";
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 9000;
 
 // Activate morgan
 if (process.env.NODE_ENV !== "production") {
