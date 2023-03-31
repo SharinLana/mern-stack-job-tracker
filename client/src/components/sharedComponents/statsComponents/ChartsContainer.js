@@ -3,7 +3,6 @@ import Wrapper from "../../../assets/wrappers/ChartsContainer";
 import BarChartComponent from "./BarChart";
 import AreaChartComponent from "./AreaChart";
 import { useAppContext } from "../../../context/appContext";
-import { set } from "mongoose";
 
 const ChartsContainer = () => {
   const { showLargeSidebar, monthlyApplications: data } = useAppContext();

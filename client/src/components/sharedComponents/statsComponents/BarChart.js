@@ -7,7 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from "recharts"; //https://recharts.org
+} from "recharts"; 
 
 const BarChartComponent = ({ data }) => {
   return (
