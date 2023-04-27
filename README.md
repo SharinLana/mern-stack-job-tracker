@@ -1,4 +1,4 @@
-# Job Tracker
+## Job Tracker
 
 > This web app allows you to keep track of your job applications by creating them and storing in a database. You can also edit or delete existing applications, and view statistics on them: number of declined, pending, scheduled for interview jobs and number of applications created each month.
 > To start using the application, you need to create a personal profile/account.
@@ -27,7 +27,7 @@ https://mern-job-tracker-mt0w.onrender.com/
 
 ### Functionalities:
 
-- protected routes for auauthorized users;
+- protected routes for unauthorized users;
 - registering (creating account) / login / logout options;
 - editing profile data;
 - adding / editing job information (including job title, company name, job type, status, salary range, recruiter's name and email, interview date and time, etc);
