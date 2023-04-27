@@ -17,7 +17,6 @@ const jobSchema = new mongoose.Schema(
     },
     jobLocation: {
       type: String,
-      required: [true, "Please specify the location"],
       maxLength: [20, "Location can contain no more than 20 letters"],
       trim: true,
     },
@@ -38,10 +37,6 @@ const jobSchema = new mongoose.Schema(
     },
     recruiterEmail: {
       type: String,
-      validate: {
-        validator: validator.isEmail,
-        message: "Incorrect email",
-      },
       trim: true,
     },
     salaryMin: {

@@ -280,6 +280,7 @@ const AppProvider = ({ children }) => {
 
       dispatch({ type: ADD_JOB_SUCCESS });
     } catch (error) {
+      console.log(error.response);
       if (error.response.status !== 401) {
         dispatch({
           type: ADD_JOB_ERROR,
