@@ -19,7 +19,7 @@ The main goals for me as a web developer were to improve my skills in working wi
 
 ### To view the app in the browser, copy and paste the following line to your browser URL address bar:
 
-> NOTE: The app is deployed on the free tier of Render.com, so most of the time it's in a sleep mode. It may take up to 60-90 seconds for Render.com to wake it up. Thank you for your patience!
+> NOTE: The app is deployed on a free tier of Render.com, so most of the time it's in a sleep mode. It may take up to 60-90 seconds for Render.com to wake it up. Thank you for your patience!
 
 ```
 https://mern-job-tracker-mt0w.onrender.com/
