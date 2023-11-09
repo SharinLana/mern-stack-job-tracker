@@ -135,10 +135,10 @@ const deleteJob = async (req, res, next) => {
 const getStats = async (req, res, next) => {
   let stats = await JobModel.aggregate([
     { $match: { createdBy: new mongoose.Types.ObjectId(req.user.userId) } },
-    { $group: { _id: "$jobStatus", count: { $sum: 1 } } },
+    { $group: { _id: "$jobStatus", count: { $sum: 1 } } }, // it will add up the value of expression for each row
   ]);
 
-  // Changing the ststa format from array to object
+  // Changing the stats format from array to object
   stats = stats.reduce((acc, current) => {
     const { _id, count } = current;
     acc[_id] = count;
