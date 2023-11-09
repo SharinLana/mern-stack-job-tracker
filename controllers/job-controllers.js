@@ -99,7 +99,7 @@ const editJob = async (req, res, next) => {
     throw new BadRequestError(`There's no job with the id: ${req.params.id}`);
   }
 
-  // Checking the current user permittions for editing the job:
+  // Checking the current user permissions for editing the job:
   checkPermissions(req.user, job.createdBy);
 
   const updatedJob = await JobModel.findOneAndUpdate(
